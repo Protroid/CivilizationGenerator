@@ -27,24 +27,6 @@ h2 {
     margin-top: 1.3em;
 }
 
-button {
-    background-color: darkslategrey;
-    border: none;
-    width: 150px;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    float: center;
-}
-
-button:hover{
-    background-color: slategrey;
-    color: white;
-}
-
 a {
     color: #0083e8;
 }
@@ -71,10 +53,25 @@ textarea{
     resize: none;
 }
 
-button[id=generateCivilization]
-{
+button {
+    background-color: darkslategrey;
+    border: none;
+    width: 150px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    float: center;
     width: 100%;
 }
+
+button:hover{
+    background-color: slategrey;
+    color: white;
+}
+
 
 @-webkit-keyframes colorize {
     0% {
@@ -92,4 +89,59 @@ button[id=generateCivilization]
     100% {
         filter: grayscale(0%);
     }
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: darkslategray;
+}
+
+li {
+    float: left;
+}
+
+li a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+    background-color: slategray;
+}
+
+li.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+form p label {
+	display:block;
+	float:left;
+	width:310px;
 }

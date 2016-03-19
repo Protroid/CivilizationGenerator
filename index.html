@@ -14,13 +14,20 @@
             <img title="The painter is not simply someone who looks and who sees. Above all, the artist is someone who exposes a personal vision by rendering it visible." src="Screenshots/Uffizi.jpg" onclick="location.href='index.html'" />
         </a>
 
-        <p>
-            <button type="button" onclick="location.href='Civilization.html'">Civilization</button>
-            <button type="button">Leader</button>
-            <button type="button">Trait</button>
-            <button type="button">Unit</button>
-            <button type="button">Building</button>
-        </p>
+        <ul>
+            <li><a class="active" href="#home" onclick="location.href='index.html'">Home</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Generator</a>
+                <div class="dropdown-content">
+                    <a href="#Civilization" onclick="location.href='Civilization.html'">Civilization</a>
+                    <a href="#Leader" onclick="location.href='Leader.html'">Leader</a>
+                    <a href="#Trait" onclick="location.href='Trait.html'">Trait</a>
+                </div>
+            </li>
+            <li><a href="#tutorials">Tutorials</a></li>
+            <li style="float:right"><a class="active" href="#about">About</a></li>
+        </ul>
+    
         
         <h1>Civilization V Creation Tool</h1>
         <h2>Welcome!</h2>

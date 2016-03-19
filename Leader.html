@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>CIV V Creation Tool</title>
+        <meta name="description" content="An interactive XML Table Generator for Civilization V modifications.">
+        <link rel="stylesheet" href="main.css">
+    </head>
+    <body>
+                
+        <a href="screenshots/Uffizi.jpg">
+            <img title="The painter is not simply someone who looks and who sees. Above all, the artist is someone who exposes a personal vision by rendering it visible." src="Screenshots/Uffizi.jpg" onclick="location.href='index.html'" />
+        </a>
+
+        <ul>
+            <li><a href="#home" onclick="location.href='index.html'">Home</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Generator</a>
+                <div class="dropdown-content">
+                    <a href="#Civilization" onclick="location.href='Civilization.html'">Civilization</a>
+                    <a class="active" href="#Leader" onclick="location.href='Leader.html'">Leader</a>
+                    <a href="#Trait" onclick="location.href='Trait.html'">Trait</a>
+                </div>
+            </li>
+            <li><a href="#tutorials">Tutorials</a></li>
+            <li style="float:right"><a class="active" href="#about">About</a></li>
+        </ul>
+        
+        
+        <h1>Civilization V Creation Tool</h1>
+        <h2>Leader</h2>
+        <!-- Leader Table-->
+        <form>
+            <h5>Any Civilization needs a strong willed Leader to lead them into prosperity. In terms of Civilization V, the Leader.xml page is used to configure and develop the artificial intelligence of your civilization, determining how the AI will generally respond to trade, development, and war. Before any of that though, lets start with your leader's reference name. This is so your Civilization will know what Leader is thiers. The format for leader reference names in Civilization V is; LEADER_MY_LEADER.</h5>
+            
+            <p>
+                <label>Leader Reference Name:</label>
+                <input type="text" id="leaderReferenceName" title="The Reference Name of your Leader."><br>
+            </p>
+            
+            <h5>Now its time for art defines. These are set up by a separate XML file in order to organize the Leader Scene, and other elements. Wu Zeitan's Art Defines for example are located in Wu_Scene.xml.</h5>
+            
+            <p>
+                <label>Art Defines:</label>
+                <input type="text" id="artDefines" title="Your leader's art defines file."><br>
+            </p>
+            
+            <h5>As for their icon, the process is similar to all other xml files. Simply input the .dds file the icon is in and input its index.</h5>
+            
+            <p>
+                    <label>Icon Atlas:</label>
+                    <input type="text" id="atlasFile" title="The Icon Atlas contains your Leader's icon."><br>
+
+                    <label>Portrait Index:</label>
+                    <input type="number" min = 0 value = 0 id="portraitIndex" title="The Reference Name is how your Leader is recognized by Civilization V."><br>
+            <p>
+            
+            <h2>Basic Attributes</h2>
+            
+            <h5>Now lets sort out some general guidelines for the leader. Each one is fairly self explanatory, such as how loyal is a Leader after they made an agreement? How chatty are they? How much do they hate acts of warmongering? Each of these are on a simple scale, 1 to 10. The higher the value, the more inclined your leader is towards certain behaviors.</h5>
+            
+            <p>
+                    <label>Victory Competitiveness:</label>
+                    <input type="number" min=1 max=10 value=1 id="vCompete" title="This is how your Leader responds to other players winning."><br>
+
+                    <label>Wonder Competitiveness:</label>
+                    <input type="number" min=1 max=10 value=1 id="wCompete" title="This is how your Leader responds to other players building wonders."><br>
+                
+                    <label>Minor Civ Competitiveness:</label>
+                    <input type="number" min=1 max=10 value=1 id="mCompete" title="This is how your Leader responds to other players influencing minor civilizations."><br>
+                
+                    <label>Boldness:</label>
+                    <input type="number" min=1 max=10 value=1 id="boldness" title="This is how bold your Leader is."><br>
+
+                    <label>Diplomatic Balance:</label>
+                    <input type="number" min=1 max=10 value=1 id="diploBalance" title="This is how your Leader treats diplomacy."><br>
+                
+                    <label>Warmonger Hate:</label>
+                    <input type="number" min=1 max=10 value=1 id="warHate" title="This is how your Leader responds to warmongering."><br>
+                
+                    <label>Work Against Willingness:</label>
+                    <input type="number" min=1 max=10 value=1 id="workAgainst" title="This is how hard the AI will try to work against you."><br>
+
+                    <label>Work With Willingness:</label>
+                    <input type="number" min=1 max=10 value=1 id="workWith" title="This is how hard the AI will try to work with you."><br>
+
+                    <label>DoF Willingness:</label>
+                    <input type="number" min=1 max=10 value=1 id="dofWillingness" title="This is how willing the AI is to make a Declaration of Friendship."><br>
+
+                    <label>Loyalty:</label>
+                    <input type="number" min=1 max=10 value=1 id="loyalty" title="This is how loyal the AI will be to their agreements."><br>
+
+                    <label>Neediness:</label>
+                    <input type="number" min=1 max=10 value=1 id="need" title="This is how needy the AI will be."><br>
+
+                    <label>Forgiveness:</label>
+                    <input type="number" min=1 max=10 value=1 id="forgive" title="This is often the AI will seek forgiveness."><br>
+                
+                    <label>Chattiness:</label>
+                    <input type="number" min=1 max=10 value=1 id="chat" title="This is how chatty the AI will be."><br>
+
+                    <label>Meanness:</label>
+                    <input type="number" min=1 max=10 value=1 id="mean" title="This is how mean the AI will be."><br>
+            </p>
+            
+            <h2>Major Civilization Bias</h2>
+            
+            <h5>Now it is time for your Leader's biases towards Major Civilizations. These attributes will determine how your Leader will see other Civilizations in game.</h5>
+            
+            <p>
+                <label>War:</label>
+                <input type="number" min=1 max=10 value=1 id="majorWar" title="This is how your inclined your leader is to declare war on major civilizations."><br>
+
+                <label>Hostile:</label>
+                <input type="number" min=1 max=10 value=1 id="majorHostile" title="This is how inclined your Leader is to appear hostile towards major civilizations."><br>
+
+                <label>Deceptive:</label>
+                <input type="number" min=1 max=10 value=1 id="majorDeceptive" title="How deceptive your leader is."><br>
+
+                <label>Guarded:</label>
+                <input type="number" min=1 max=10 value=1 id="majorGuarded" title="This is how often your Leader will appear guarded."><br>
+
+                <label>Afraid:</label>
+                <input type="number" min=1 max=10 value=1 id="majorAfraid" title="This is how often your Leader will appear afraid."><br>
+ 
+                <label>Friendly:</label>
+                <input type="number" min=1 max=10 value=1 id="majorFriendly" title="This is how often your Leader will appear friendly."><br>
+                
+                <label>Neutral:</label>
+                <input type="number" min=1 max=10 value=1 id="majorNeutral" title="This is how often your Leader will appear neutral."><br>
+            </p>
+            <h2>Minor Civilization Bias</h2>
+            
+            <h5>These values will represent how your Leader reacts to minor civilizations, also known as City States.</h5>
+            
+            <p>
+                <label>Ignore:</label>
+                <input type="number" min=1 max=10 value=1 id="minorIgnore" title="This is how your inclined your leader is to ignore minor civilizations."><br>
+                
+                <label>Friendly:</label>
+                <input type="number" min=1 max=10 value=1 id="minorFriendly" title="This is how inclined your Leader is to be friendly towards minor civilizations."><br>
+              
+                <label>Protective:</label>
+                <input type="number" min=1 max=10 value=1 id="minorProtective" title="This is how inclined your leader is to protect minor civilizations."><br>
+                
+                <label>Conquest:</label>
+                <input type="number" min=1 max=10 value=1 id="minorConquest" title="This is inclined your leader is to conquer minor civilizations."><br>
+                
+                <label>Bully:</label>
+                <input type="number" min=1 max=10 value=1 id="minorBully" title="This is inclined your leader is to bully minor civilizations."><br>
+            </p>
+            
+            <h2>Civilization Flavors</h2>
+            
+            <h5>These values will represent how your Leader deals with internal policies, such as unit production, city growth, and desire for base yields, such as science, culture, et cetera.</h5>
+            
+            <p>
+                <label>Offense:</label>
+                <input type="number" min=1 max=10 value=1 id="f0" title="How offensive your leader is."><br>
+                
+                <label>Defense:</label>
+                <td><input type="number" min=1 max=10 value=1 id="f1" title="How defensive your leader is."><br>
+                
+                <label>City Defense:</label>
+                <input type="number" min=1 max=10 value=1 id="f2" title="How much priority your civilization gives to defending cities."><br>
+                
+                <label>Military Training:</label>
+                <input type="number" min=1 max=10 value=1 id="f3" title="How much your leader likes to train their units."><br>
+                
+                <label>Recon:</label>
+                <input type="number" min=1 max=10 value=1 id="f4" title="How likely your leader is to build recon units."><br>
+                
+                <label>Ranged:</label>
+                <input type="number" min=1 max=10 value=1 id="f5" title="How likely your leader is to build ranged units."><br>
+                
+                <label>Mobile:</label>
+                <input type="number" min=1 max=10 value=1 id="f6" title="How likely your leader is to build mobile units."><br>
+                
+                <label>Naval:</label>
+                <input type="number" min=1 max=10 value=1 id="f7" title="How likely your leader is to build naval units."><br>
+                
+                <label>Naval Recon:</label>
+                <input type="number" min=1 max=10 value=1 id="f8" title="How likely your leader is to build naval recon units."><br>
+                
+                <label>Naval Growth:</label>
+                <input type="number" min=1 max=10 value=1 id="f9" title="How likely your leader is to grow their navy."><br>
+                
+                <label>Naval Tile Improvement:</label>
+                <input type="number" min=1 max=10 value=1 id="f10" title="How likely your leader is to improve offshore tiles."><br>
+                
+                <label>Air:</label>
+                <input type="number" min=1 max=10 value=1 id="f11" title="How likely your leader is to build air units."><br>
+                
+                <label>Expansion:</label>
+                <input type="number" min=1 max=10 value=1 id="f12" title="How likely your leader is to expand."><br>
+                
+                <label>Growth:</label>
+                <input type="number" min=1 max=10 value=1 id="f13" title="How likely your leader is to grow their army."><br>
+                
+                <label>Tile Improvement:</label>
+                <input type="number" min=1 max=10 value=1 id="f14" title="How likely your leader is to improve land tiles."><br>
+                
+                <label>Infrastructure:</label>
+                <input type="number" min=1 max=10 value=1 id="f15" title="How likely your leader is to build infrastructure."><br>
+                
+                <label>Production:</label>
+                <input type="number" min=1 max=10 value=1 id="f16" title="How likely your leader is to focus the production yield."><br>
+                
+                <label>Gold:</label>
+                <input type="number" min=1 max=10 value=1 id="f17" title="How likely your leader is to focus the gold yield."><br>
+
+                <label>Science:</label>
+                <input type="number" min=1 max=10 value=1 id="f18" title="How likely your leader is to focus the science yield."><br>
+                
+                <label>Culture:</label>
+                <input type="number" min=1 max=10 value=1 id="f19" title="How likely your leader is to focus the culture yield."><br>
+                
+                <label>Happiness:</label>
+                <input type="number" min=1 max=10 value=1 id="f20" title="How likely your leader is to focus the happiness yield."><br>
+                
+                <label>Great People:</label>
+                <input type="number" min=1 max=10 value=1 id="f21" title="How likely your leader is to focus on generating great people."><br>
+                
+                <label>Wonders:</label>
+                <input type="number" min=1 max=10 value=1 id="f22" title="How likely your leader is to build wonders."><br>
+                
+                <label>Religion:</label>
+                <input type="number" min=1 max=10 value=1 id="f23" title="How likely your leader is to found a religion."><br>
+                
+                <label>Diplomacy:</label>
+                <input type="number" min=1 max=10 value=1 id="f24" title="How much your leader appreciates diplomacy."><br>
+                
+                <label>Spaceship:</label>
+                <input type="number" min=1 max=10 value=1 id="f25" title="How likely your leader is to try for a science victory."><br>
+                
+                <label>Water Connection:</label>
+                <input type="number" min=1 max=10 value=1 id="f26" title="How likely your leader is to establish water connections."><br>
+
+                <label>Nuke:</label>
+                <input type="number" min=1 max=10 value=1 id="f27" title="How likely your leader is to build a nuclear weapon."><br>
+                
+                <label>Use Nuke:</label>
+                <input type="number" min=1 max=10 value=1 id="f28" title="How likely your leader is to use a nuclear weapon."><br>
+                
+                <label>Anti Air:</label>
+                <input type="number" min=1 max=10 value=1 id="f29" title="How likely your leader is to build anti air units."><br>
+                
+                <label>Aircraft Carrier:</label>
+                <input type="number" min=1 max=10 value=1 id="f30" title="How likely your leader is to use build aircraft carriers."><br>
+                
+                <label>Espionage:</label>
+                <input type="number" min=1 max=10 value=1 id="f31" title="How likely your leader is to resort to espionage."><br>
+                
+                <label>Archaeology:</label>
+                <input type="number" min=1 max=10 value=1 id="f32" title="How likely your leader is to focus on archaeology."><br>
+                
+                <label>Land Trade Routes:</label>
+                <input type="number" min=1 max=10 value=1 id="f33" title="How likely your leader is to establish land trade routes."><br>
+                
+                <label>Naval Trade Routes:</label>
+                <input type="number" min=1 max=10 value=1 id="f34" title="How likely your leader is to establish naval trade routes."><br>
+                
+                <label>Trade Origin:</label>
+                <input type="number" min=1 max=10 value=1 id="f35" title="How likely your leader is to make their cities trade origins."><br>
+                
+                <label>Trade Destination:</label>
+                <input type="number" min=1 max=10 value=1 id="f36" title="How likely your leader is to find suitable cities for trade destinations."><br>
+                
+                <label>Airlift:</label>
+                <input type="number" min=1 max=10 value=1 id="f37" title="How likely your leader is to airlift units."><br>
+            </p>
+            <h2>Trait</h2>
+            <h5>Now lets set up your leader's trait. Every Civilization in Civilization V has a Trait, and the Leader acts as an intermediary between the Civilization and the Trait. Traits are written in the form TRAIT_MY_TRAIT.</h5>
+            <p>
+                <label>Trait Reference Name:</label>
+                <input type="text" id="traitReferenceName" title="The Reference Name of your leader's trait."><br>
+            </p>
+            <h2>Lore</h2>
+            <h5>Finally, lets write your leader's lore. You will only enter their name here. We will not be generating a civilopedia entry for your leader. If you want to write a civilopedia entry, please check a Leader.xml page.</h5>
+            <p>
+                <label>Leader Name:</label>
+                <input type="text" id="leaderName" title="This is your leader's name."><br>
+
+                <label>Is your leader female?</label>
+                <input type="checkbox" id="leaderIsFemale" title="Check this if your leader is female. Defaults to male."><br>
+            </p>
+        </form>
+        <br><button type="button" id="generateLeader" onclick="createXML(); return false;">Generate Leader.xml</button><br><br>
+        
+        <textarea id="finalXML" draggable="false" rows="100" cols="111"></textarea><br>
+    </body>
+    <script>
+        function createXML()
+        {
+            // Setting up variables.
+            var leaderRefName = document.getElementById("leaderReferenceName").value;
+            var leaderName = document.getElementById("leaderName").value;
+            var traitRefName = document.getElementById("traitReferenceName").value;
+            var majorApproachTypes = ["MAJOR_CIV_APPROACH_WAR", "MAJOR_CIV_APPROACH_HOSTILE", "MAJOR_CIV_APPROACH_DECEPTIVE", "MAJOR_CIV_APPROACH_GUARDED", "MAJOR_CIV_APPROACH_AFRAID", "MAJOR_CIV_APPROACH_FRIENDLY", "MAJOR_CIV_APPROACH_NEUTRAL"];
+            var majorApproachValues = [document.getElementById("majorWar").value, document.getElementById("majorHostile").value, document.getElementById("majorDeceptive").value, document.getElementById("majorGuarded").value, document.getElementById("majorAfraid").value, document.getElementById("majorFriendly").value, document.getElementById("majorNeutral").value];
+            var minorApproachTypes = ["MINOR_CIV_APPROACH_IGNORE", "MINOR_CIV_APPROACH_FRIENDLY", "MINOR_CIV_APPROACH_PROTECTIVE", "MINOR_CIV_APPROACH_CONQUEST", "MINOR_CIV_APPROACH_BULLY"];
+            var minorApproachValues = [document.getElementById("minorIgnore").value, document.getElementById("minorFriendly").value, document.getElementById("minorProtective").value, document.getElementById("minorConquest").value, document.getElementById("minorBully").value];
+            var flavorTypes = ["FLAVOR_OFFENSE", "FLAVOR_DEFENSE", "FLAVOR_CITY_DEFENSE", "FLAVOR_MILITARY_TRAINING", "FLAVOR_RECON", "FLAVOR_RANGED", "FLAVOR_MOBILE", "FLAVOR_NAVAL", "FLAVOR_NAVAL_RECON", "FLAVOR_NAVAL_GROWTH", "FLAVOR_NAVAL_TILE_IMPROVEMENT", "FLAVOR_AIR", "FLAVOR_EXPANSION", "FLAVOR_GROWTH", "FLAVOR_TILE_IMPROVEMENT", "FLAVOR_INFRASTRUCTURE", "FLAVOR_PRODUCTION", "FLAVOR_GOLD", "FLAVOR_SCIENCE", "FLAVOR_CULTURE", "FLAVOR_HAPPINESS", "FLAVOR_GREAT_PEOPLE", "FLAVOR_WONDER", "FLAVOR_RELIGION", "FLAVOR_DIPLOMACY", "FLAVOR_SPACESHIP", "FLAVOR_WATER_CONNECTION", "FLAVOR_NUKE", "FLAVOR_USE_NUKE", "FLAVOR_ANTIAIR", "FLAVOR_AIR_CARRIER", "FLAVOR_ESPIONAGE", "FLAVOR_ARCHAEOLOGY", "FLAVOR_I_LAND_TRADE_ROUTE", "FLAVOR_I_SEA_TRADE_ROUTE", "FLAVOR_I_TRADE_ORIGIN", "FLAVOR_I_TRADE_DESTINATION", "FLAVOR_AIRLIFT"];
+            var flavorValues = new Array(38);
+            for (var i = 0; i < 38; i++)
+            {
+                var id = "f"+i;
+                flavorValues[i]=document.getElementById(id).value
+            }
+            
+            // Writing to FinalXML
+            document.getElementById("finalXML").value='<?xml version="1.0" encoding="utf-8"?> \n';
+            document.getElementById("finalXML").value+=("<!-- I was generated by Protroid's Leader.xml Generator! --> \n");
+            document.getElementById("finalXML").value+=("<GameData> \n");
+            document.getElementById("finalXML").value+=("\t<Leaders> \n");
+            document.getElementById("finalXML").value+=("\t\t<Row> \n");
+            document.getElementById("finalXML").value+=('\t\t\t<Type>'+leaderRefName+'</Type> \n');
+            document.getElementById("finalXML").value+=('\t\t\t<Description>TXT_KEY_'+leaderRefName+'</Description> \n');
+            document.getElementById("finalXML").value+=('\t\t\t<CivilopediaTag>TXT_KEY_CIVILOPEDIA'+leaderRefName+'</CivilopediaTag> \n');
+            document.getElementById("finalXML").value+=('\t\t\t<ArtDefineTag>'+document.getElementById("artDefines").value+'</ArtDefineTag> \n');
+            document.getElementById("finalXML").value+=('\t\t\t<VictoryCompetitiveness>'+document.getElementById("vCompete").value+'</VictoryCompetitiveness> \n');
+            document.getElementById("finalXML").value+=('\t\t\t<WonderCompetitiveness>'+document.getElementById("wCompete").value+'</WonderCompetitiveness> \n');
+            document.getElementById("finalXML").value+=('\t\t\t<MinorCivCompetitiveness>'+document.getElementById("mCompete").value+'</MinorCivCompetitiveness> \n');
+            document.getElementById("finalXML").value+=('\t\t\t<Boldness>'+document.getElementById("boldness").value+'</Boldness> \n');
+            document.getElementById("finalXML").value+=('\t\t\t<DiploBalance>'+document.getElementById("diploBalance").value+'</DiploBalance> \n');
+            document.getElementById("finalXML").value+=('\t\t\t<WarmongerHate>'+document.getElementById("warHate").value+'</WarmongerHate> \n');
+            document.getElementById("finalXML").value+=('\t\t\t<WorkAgainstWillingness>'+document.getElementById("workAgainst").value+'</WorkAgainstWillingness> \n');
+            document.getElementById("finalXML").value+=('\t\t\t<WorkWithWillingness>'+document.getElementById("workWith").value+'</WorkWithWillingness> \n');
+            document.getElementById("finalXML").value+=('\t\t\t<DoFWillingness>'+document.getElementById("dofWillingness").value+'</DoFWillingness> \n');
+            document.getElementById("finalXML").value+=('\t\t\t<Loyalty>'+document.getElementById("loyalty").value+'</Loyalty> \n');
+            document.getElementById("finalXML").value+=('\t\t\t<Neediness>'+document.getElementById("need").value+'</Neediness> \n');
+            document.getElementById("finalXML").value+=('\t\t\t<Forgiveness>'+document.getElementById("forgive").value+'</Forgiveness> \n');
+            document.getElementById("finalXML").value+=('\t\t\t<Chattiness>'+document.getElementById("chat").value+'</Chattiness> \n');
+            document.getElementById("finalXML").value+=('\t\t\t<Meanness>'+document.getElementById("mean").value+'</Meanness> \n');
+            document.getElementById("finalXML").value+=('\t\t\t<PortraitIndex>'+document.getElementById("portraitIndex").value+'</PortraitIndex> \n');
+            document.getElementById("finalXML").value+=('\t\t\t<IconAtlas>'+document.getElementById("atlasFile").value+'</IconAtlas> \n');
+            document.getElementById("finalXML").value+=("\t\t</Row> \n");
+            document.getElementById("finalXML").value+=("\t</Leaders> \n");
+            document.getElementById("finalXML").value+=("\t<Leader_MajorCivApproachBiases> \n");
+            for(var i = 0; i < 7; i++)
+            {
+                document.getElementById("finalXML").value+=("\t\t<Row> \n");
+                document.getElementById("finalXML").value+=("\t\t\t<LeaderType>"+leaderRefName+"</LeaderType> \n");
+                document.getElementById("finalXML").value+=("\t\t\t<MajorCivApproachType>"+majorApproachTypes[i]+"</MajorCivApproachType> \n");
+                document.getElementById("finalXML").value+=("\t\t\t<Bias>"+majorApproachValues[i]+"</Bias> \n");
+                document.getElementById("finalXML").value+=("\t\t</Row> \n");
+            }
+            document.getElementById("finalXML").value+=("\t</Leader_MajorCivApproachBiases> \n");
+            document.getElementById("finalXML").value+=("\t<Leader_MinorCivApproachBiases> \n");
+            for(var i = 0; i < 5; i++)
+            {
+                document.getElementById("finalXML").value+=("\t\t<Row> \n");
+                document.getElementById("finalXML").value+=("\t\t\t<LeaderType>"+leaderRefName+"</LeaderType> \n");
+                document.getElementById("finalXML").value+=("\t\t\t<MinorCivApproachType>"+minorApproachTypes[i]+"</MinorCivApproachType> \n");
+                document.getElementById("finalXML").value+=("\t\t\t<Bias>"+minorApproachValues[i]+"</Bias> \n");
+                document.getElementById("finalXML").value+=("\t\t</Row> \n");
+            }
+            document.getElementById("finalXML").value+=("\t</Leader_MinorCivApproachBiases> \n");
+            document.getElementById("finalXML").value+=("\t<Leader_Flavors> \n");
+            for(var i = 0; i < 38; i++)
+            {
+                document.getElementById("finalXML").value+=("\t\t<Row> \n");
+                document.getElementById("finalXML").value+=("\t\t\t<LeaderType>"+leaderRefName+"</LeaderType> \n");
+                document.getElementById("finalXML").value+=("\t\t\t<FlavorType>"+flavorTypes[i]+"</FlavorType> \n");
+                document.getElementById("finalXML").value+=("\t\t\t<Flavor>"+flavorValues[i]+"</Flavor> \n");
+                document.getElementById("finalXML").value+=("\t\t</Row> \n");
+            }
+            document.getElementById("finalXML").value+=("\t</Leader_Flavors> \n");
+            document.getElementById("finalXML").value+=("\t<Leader_Traits> \n");
+            document.getElementById("finalXML").value+=("\t\t<Row> \n");
+            document.getElementById("finalXML").value+=("\t\t\t<LeaderType>"+leaderRefName+"</LeaderType> \n");
+            document.getElementById("finalXML").value+=("\t\t\t<TraitType>"+traitRefName+"</TraitType> \n");
+            document.getElementById("finalXML").value+=("\t\t</Row> \n");
+            document.getElementById("finalXML").value+=("\t</Leader_Traits> \n");
+            document.getElementById("finalXML").value+=("\t<Language_en_US> \n");
+            document.getElementById("finalXML").value+=('\t\t<Row Tag="TXT_KEY_'+leaderRefName+'"> \n');
+            document.getElementById("finalXML").value+=("\t\t\t<Text>"+leaderName+"</Text> \n");
+            if(document.getElementById("leaderIsFemale").checked)
+                document.getElementById("finalXML").value+=("\t\t\t<Gender>feminine</Gender> \n");
+            document.getElementById("finalXML").value+=("\t\t</Row> \n");
+            document.getElementById("finalXML").value+=("\t</Language_en_US> \n");
+            document.getElementById("finalXML").value+=("</GameData> \n");    
+        }
+    </script>
+</html>
