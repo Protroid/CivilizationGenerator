@@ -13,13 +13,20 @@
             <img title="The painter is not simply someone who looks and who sees. Above all, the artist is someone who exposes a personal vision by rendering it visible." src="Screenshots/Uffizi.jpg"/>
         </a>
         
-        <p>
-            <button type="button" onclick="location.href='index.html'">Civilization</button>
-            <button type="button">Leader</button>
-            <button type="button">Trait</button>
-            <button type="button">Unit</button>
-            <button type="button">Building</button>
-        </p>
+       <ul>
+            <li><a href="#home" onclick="location.href='index.html'">Home</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Generator</a>
+                <div class="dropdown-content">
+                    <a class="active" href="#Civilization" onclick="location.href='Civilization.html'">Civilization</a>
+                    <a href="#Leader" onclick="location.href='Leader.html'">Leader</a>
+                    <a href="#Trait" onclick="location.href='Trait.html'">Trait</a>
+                </div>
+            </li>
+            <li><a href="#tutorials">Tutorials</a></li>
+            <li style="float:right"><a class="active" href="#about">About</a></li>
+        </ul>
+        
         
         <h1>Civilization V Creation Tool</h1>
         <br>
@@ -28,20 +35,23 @@
         
         <!-- Civilization Table-->
         <form>
-            <h5>Any civilization needs some basic information before it can be created. The most prominent being the need for a name! Civilization V and its modifications follow a general naming scheme. America is noted as CIVILIZATION_AMERICA and Korea is listed as CIVILIZATION_KOREA, to provide two examples. Your civilization's name should also follow this form; CIVILIZATION_YOUR_CIV</h5>
+            <h5>Any civilization needs some basic information before it can be created. The most prominent being the need for a name! Civilization V and its modifications follow a general naming scheme. America is noted as CIVILIZATION_AMERICA and Korea is listed as CIVILIZATION_KOREA, to provide two examples. Your civilization's name should also follow this form; CIVILIZATION_MY_CIV</h5>
             
             Reference Name:
             <input type="text" id="referenceName" title="The Reference Name is how your Civilization is recognized by Civilization V."><br>
             
             <h5>Now that we have a name, we are also going to need some art defines. These add flair to your civilization's cities, as otherwise it would be confusing to see Japan suddenly adopt Greco-Roman architecture! These come provided within Civilization V, so select the one that you want in the dropdown menu.</h5>
             
-            <h5>The Icon Atlas is where your icons will be stored. The proper format for these images can be found in the Civilization files. Leaving these Atlas references blank means that your new Civilization will be using Washington's icon.</h5>
+            <h5>The Icon Atlas is where your icons will be stored. All Vanilla Civilizations can find their Icon Atlas in CIV_COLOR_ATLAS and their Alpha Atlas in CIV_ALPHA_ATLAS.</h5>
             
             Icon Atlas:
-            <input type="text" id="iconAtlas" title="This is the name of the .dds file that contains your Civilization's icon atlas. If left blank your civ will use Washington's icon."><br>
+            <input type="text" id="iconAtlas" title="This is the reference name of the file that contains your Civilization's icon atlas."><br>
             
             Icon Alpha Atlas:
-            <input type="text" id="iconAlphaAtlas" title="This is the name of the .dds file that contains your Civilization's icon alpha atlas. If left blank, this will be Washington's alpha atlas."><br>
+            <input type="text" id="iconAlphaAtlas" title="This is the reference name of the file that contains your Civilization's icon alpha atlas."><br>
+            
+            Portrait Index:
+            <input type="number" min = 0 value = 0 id="portraitIndex" title="This is the index of your civilization's icon."><br>
             
             
             <h5>Images are the next part. It is important to note that Civilization V only accepts .dds files, as .dds files are the coolest. Write the names of your images for your Map and your Dawn of Man image below, including the .dds tag. Your file should end up looking like; MapBabylon512.dds or DOM_Nebuchadnezzar.dds. Note that after you get your file, you need to set all of your image files to SetVFS=False in the Civilization V Modbuddy.</h5>
@@ -292,12 +302,12 @@
             Adjective Text:
             <input type="text" id="civadj" name="civadj" title="Enter the adjective for your civilization's people."><br>
             Dawn of Man Text:
-            <textarea id="civDOMText" draggable="false" rows="10" cols="110">Can you lead your civilization to stand the test of time? If you want to move your text to a new line, type [newline]!</textarea><br>
+            <textarea id="civDOMText" draggable="false" rows="10" cols="111">Can you lead your civilization to stand the test of time? If you want to move your text to a new line, type [newline]!</textarea><br><br>
         </form>
         <!--Generate!-->
-        <button type="button" id="generateCivilization" onclick="createXML(); return false;">Generate Civilization.xml</button><br>
+        <button type="button" id="generateCivilization" onclick="createXML(); return false;">Generate Civilization.xml</button><br><br>
         
-        <textarea id="finalXML" draggable="false" rows="100" cols="110"></textarea><br>
+        <textarea id="finalXML" draggable="false" rows="100" cols="111"></textarea><br>
         
         
         
@@ -328,6 +338,7 @@
             var BackgroundRed=0.0;
             var BackgroundGreen=0.0;
             var BackgroundBlue=0.0;
+            var portraitIndex = 0;
             
             
             function generateCityList()
@@ -395,6 +406,7 @@
                 civilizationTitle = document.getElementById("civtitle").value;
                 civilizationShortDesc = document.getElementById("civshortdesc").value;
                 civilizationDOMText = document.getElementById("civDOMText").value;
+                portraitIndex = document.getElementById("portraitIndex").value;
                 leaderName=document.getElementById("leader").value;
                 religionName=document.getElementById("religion").value;
                 IconRed = document.getElementById("ir").value;
@@ -437,7 +449,7 @@
                 createCivilizationFiles();
                 document.getElementById("finalXML").value='<?xml version="1.0" encoding="utf-8"?> \n';
                 document.getElementById("finalXML").value+=("<!-- I was generated by Protroid's Civilization.xml Generator! --> \n <GameData> \n");
-                document.getElementById("finalXML").value+=(" \t <Civilizations> \n\t\t <Row> \n\t\t\t <Type>"+civilizationReference+"</Type> \n\t\t\t <Description>TXT_KEY_"+civilizationReference+"_DESC</Description> \n\t\t\t <CivilopediaTag>TXT_KEY_"+civilizationReference+"_CIV_ID</CivilopediaTag> \n\t\t\t <ShortDescription>TXT_KEY_"+civilizationReference+"_SHORT_DESC</ShortDescription> \n\t\t\t <Adjective>TXT_KEY_"+civilizationReference+"_ADJECTIVE</Adjective> \n\t\t\t <DefaultPlayerColor>PLAYERCOLOR_"+civilizationReference+"</DefaultPlayerColor> \n\t\t\t <ArtDefineTag>ART_DEF_CIVILIZATION_AMERICA</ArtDefineTag> \n\t\t\t <ArtStyleType>"+civilizationArtStyle+"</ArtStyleType> \n\t\t\t <ArtStyleSuffix>_EURO</ArtStyleSuffix> \n\t\t\t <ArtStylePrefix>EUROPE</ArtStylePrefix> \n\t\t\t <PortraitIndex>0</PortraitIndex> \n\t\t\t <IconAtlas>"+civilizationAtlas+"_COLOR_ATLAS</IconAtlas> \n\t\t\t <AlphaIconAtlas>"+civilizationAlphaAtlas+"_ALPHA_ATLAS</AlphaIconAtlas> \n\t\t\t <MapImage>"+civilizationMapImage+"</MapImage> \n\t\t\t <DawnOfManQuote>TXT_KEY_CIV5_DAWN_"+civilizationReference+"_TEXT</DawnOfManQuote> \n\t\t\t <DawnOfManImage>"+civilizationDOMImage+"</DawnOfManImage> \n\t\t\t <DawnOfManAudio>"+civilizationDOMAudio+"</DawnOfManAudio> \n\t\t </Row> \n\t </Civilizations> \n");
+                document.getElementById("finalXML").value+=(" \t <Civilizations> \n\t\t <Row> \n\t\t\t <Type>"+civilizationReference+"</Type> \n\t\t\t <Description>TXT_KEY_"+civilizationReference+"_DESC</Description> \n\t\t\t <CivilopediaTag>TXT_KEY_"+civilizationReference+"_CIV_ID</CivilopediaTag> \n\t\t\t <ShortDescription>TXT_KEY_"+civilizationReference+"_SHORT_DESC</ShortDescription> \n\t\t\t <Adjective>TXT_KEY_"+civilizationReference+"_ADJECTIVE</Adjective> \n\t\t\t <DefaultPlayerColor>PLAYERCOLOR_"+civilizationReference+"</DefaultPlayerColor> \n\t\t\t <ArtDefineTag>ART_DEF_CIVILIZATION_AMERICA</ArtDefineTag> \n\t\t\t <ArtStyleType>"+civilizationArtStyle+"</ArtStyleType> \n\t\t\t <ArtStyleSuffix>_EURO</ArtStyleSuffix> \n\t\t\t <ArtStylePrefix>EUROPE</ArtStylePrefix> \n\t\t\t <PortraitIndex>"+portraitIndex+"</PortraitIndex> \n\t\t\t <IconAtlas>"+civilizationAtlas+"_COLOR_ATLAS</IconAtlas> \n\t\t\t <AlphaIconAtlas>"+civilizationAlphaAtlas+"_ALPHA_ATLAS</AlphaIconAtlas> \n\t\t\t <MapImage>"+civilizationMapImage+"</MapImage> \n\t\t\t <DawnOfManQuote>TXT_KEY_CIV5_DAWN_"+civilizationReference+"_TEXT</DawnOfManQuote> \n\t\t\t <DawnOfManImage>"+civilizationDOMImage+"</DawnOfManImage> \n\t\t\t <DawnOfManAudio>"+civilizationDOMAudio+"</DawnOfManAudio> \n\t\t </Row> \n\t </Civilizations> \n");
                 document.getElementById("finalXML").value+=("\t <Civilization_CityNames> \n");
                 for (var i = 0; i < document.getElementById("cityCount").value; i++)
                 {

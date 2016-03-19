@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>CIV V Creation Tool</title>
+        <meta name="description" content="An interactive XML Table Generator for Civilization V modifications.">
+        <link rel="stylesheet" href="main.css">
+    </head>
+    <body>
+                
+        <a href="screenshots/Uffizi.jpg">
+            <img title="The painter is not simply someone who looks and who sees. Above all, the artist is someone who exposes a personal vision by rendering it visible." src="Screenshots/Uffizi.jpg" onclick="location.href='index.html'" />
+        </a>
+
+        <ul>
+            <li><a href="#home" onclick="location.href='index.html'">Home</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Generator</a>
+                <div class="dropdown-content">
+                    <a href="#Civilization" onclick="location.href='Civilization.html'">Civilization</a>
+                    <a href="#Leader" onclick="location.href='Leader.html'">Leader</a>
+                    <a class="active" href="#Trait" onclick="location.href='Leader.html'">Trait</a>
+                </div>
+            </li>
+            <li><a href="#tutorials">Tutorials</a></li>
+            <li style="float:right"><a class="active" href="#about">About</a></li>
+        </ul>
+        
+        
+        <h1>Civilization V Creation Tool</h1>
+        <h2>Traits</h2>
+        <!-- Trait Table-->
+        <form>
+            <h5>Traits are one of the key components to what makes a Civilization special. In gameplay terms, they exist in order to vary the playstyles of Civilizations, in order to make gameplay interesting no matter what civilization you select. Even if there is overlap in what Civilizations focus, traits are what keep them unique. Both Korea and Assyria heavily incentivise science gain, but they each handle it differently. Korea does this by focusing on Great People and their tile improvements, while Assyria gains technology through conquest. The trait tool will allow you to create unique situations where your Civilization will truly shine.</h5>
+            
+            <h5>Traits need a reference name for them to be recognized in code. Every reference name in Civilization V goes by the same format. For traits, this will appear as TRAIT_MY_TRAIT.</h5>
+            
+            <p>
+                <label>Trait Reference Name:</label>
+                <input type="text" id="traitReferenceName" title="The Reference Name of your Trait."><br>
+            </p>
+            <h2>Basic Modifiers</h2>
+            <h5>Now for what makes traits truly special. The following is a list of modifiers that exist within the Trait Table within Civilization V. You may recognize some of them, as many of them directly reference existing Civilizations in the base game. Note that leaving any field blank will make the generator ignore it completely.</h5>
+            <p>
+                <label>Experience Modifier:</label>
+                <input type="number" min=-100 max=100 id="expModifier" title="This is a percentage based modifier of how much experience a Civilization's units will earn after combat."><br>
+            
+                <label>Great People Rate Modifier:</label>
+                <input type="number" min=-100 max=100 id="gpModifier" title="This is a percentage based modifier of how quickly your Civilization's cities will generate Great People."><br>
+                
+                <label>Great Scientist Rate Modifier:</label>
+                <input type="number" min=-100 max=100 id="scientistModifier" title="This is a percentage based modifier of how quickly your Civilization's cities will generate Great Scientists."><br>
+                
+                <label>Great General Rate Modifier:</label>
+                <input type="number" min=-100 max=100 id="generalModifier" title="This is a percentage based modifier of how quickly your Civilization's units will generate Great Generals."><br>
+                
+                <label>Great General Extra Bonus:</label>
+                <input type="number" min=-100 max=100 id="generalExtraBonus" title="This is a percentage based modifier of how much more effective your Great Generals are to those of other Civilizations"><br>
+                
+                <label>Great Person Gift Influence:</label>
+                <input type="number" min=0 max=100 id="gpInfluenceGift" title="This is a flat value depicting how much influence is gained in City States by gifting them Great People."><br>
+                
+                <!-- Figure out what these three do differently -->
+                <label>Max Global Building Production Modifier:</label>
+                <input type="number" min=-100 max=100 id="globalProductionModifier" title="..."><br>
+                
+                <label>Max Team Building Production Modifier:</label>
+                <input type="number" min=-100 max=100 id="teamProductionModifier" title="..."><br>
+                
+                <label>Max Player Building Production Modifier:</label>
+                <input type="number" min=-100 max=100 id="playerProductionModifier" title="...."><br>
+                
+                <label>City Unhappiness Modifier:</label>
+                <input type="number" min=-100 max=100 id="cityUnhappinessModifier" title="This is a percentage based modifier of unhappiness from cities"><br>
+               
+                <label>Population Unhappiness Modifier:</label>
+                <input type="number" min=-100 max=100 id="populationUnhappinessModifier" title="This is a percentage based modifier of unhappiness from the population"><br>
+                
+                <label>City State Friendship Modifier:</label>
+                <input type="number" min=-100 max=100 id="cityStateFriendshipModifier" title="This is a percentage based modifier of the rate at which you gain and lose favor from city states."><br>
+                
+                <label>City State Combat Modifier:</label>
+                <input type="number" min=-100 max=100 id="cityStateCombatModifier" title="This is a percentage based modifier of your Civilization's unit's combat effectiveness against city states."><br>
+                
+                <label>Land Barbarian Conversion:</label>
+                <input type="number" min=0 max=100 id="landBarbarianConversion" title="This is a percentage based modifier of the chance to convert land Barbarian units to your army."><br>
+                
+                <label>Sea Barbarian Conversion:</label>
+                <input type="number" min=0 max=100 id="seaBarbarianConversion" title="This is a percentage based modifier of the chance to convert naval Barbarian units to your navy."><br>
+                
+                <label>Land Unit Maintenance Modifier:</label>
+                <input type="number" min=-100 max=100 id="landMaintainModifier" title="This is a percentage based modifier of the cost of maintaining land units."><br>
+                
+                <label>Naval Unit Maintenance Modifier:</label>
+                <input type="number" min=-100 max=100 id="navalMaintainModifier" title="This is a percentage based modifier of the cost of maintaining naval units."><br>
+                
+                <label>Capital Building Modifier:</label>
+                <input type="number" min=-100 max=100 id="capitalBuildingModifier" title="This is a percentage based modifier of building new objects in your Civilization's Capital."><br>
+                
+                <label>Plot Buy Cost Modifier:</label>
+                <input type="number" min=-100 max=100 id="plotBuyCostModifier" title="This is a percentage based modifier of the cost of buying tiles with gold."><br>
+                
+                <label>Plot Culture Cost Modifier:</label>
+                <input type="number" min=-100 max=100 id="plotCultureCostModifier" title="This is a percentage based modifier of passively gaining tiles with culture."><br>
+                
+                <label>Culture From Kills:</label>
+                <input type="number" min=0 max=100 id="cultureFromKills" title="This is a percentage based modifier of how much culture is gained from killing a unit, proportional to that unit's combat strength."><br>
+                
+                <label>City Culture Bonus:</label>
+                <input type="number" min=0 max=999 id="cityCultureBonus" title="This is a flat value representing culture gain from cities."><br>
+                
+                <label>Capital Theming Bonus Modifier:</label>
+                <input type="number" min=0 max=100 id="capitalThemingBonusModifier" title="This is a percentage based modifier of theming rewards in your Civilization's Capital."><br>
+                
+                <label>Policy Cost Modifier:</label>
+                <input type="number" min=-100 max=100 id="policyCostModifier" title="This is a percentage based modifier of the culture cost of policies."><br>
+                
+                <!-- Figure This Out Too -->
+                <label>City Connection Trade Route Change:</label>
+                <input type="number" min=-100 max=100 id="cityConnectionTradeRouteChange" title="..."><br>
+                
+                <label>Wonder Production Modifier:</label>
+                <input type="number" min=-100 max=100 id="wonderProductionModifier" title="This is a percentage based modifier of producing Wonders in your Civilization."><br>
+                
+                <label>Plunder Modifier:</label>
+                <input type="number" min=0 max=100 id="plunderModifier" title="This is a percentage based modifier of gold gained from plunder."><br>
+                
+                <label>Improvement Maintenance Modifier:</label>
+                <input type="number" min=-100 max=100 id="improvementMaintainModifier" title="This is a percentage based modifier of the gold cost of maintaining tile improvements."><br>
+                
+                <label>Golden Age Duration Modifier:</label>
+                <input type="number" min=-100 max=100 id="goldenAgeDurationModifier" title="This is a percentage based modifier of the length of Golden Ages."><br>
+                
+                <label>Golden Age Movement Change:</label>
+                <input type="number" min=0 max=10 id="goldenAgeMovementChange" title="This is a flat value representing the number of bonus movement actions that your Civilization's units can make during Golden Ages."><br>
+                
+                <label>Golden Age Combat Modifier:</label>
+                <input type="number" min=0 max=100 id="goldenAgeCombatModifier" title="This is a percentage based modifier of your Civilization's unit's combat effectiveness during Golden Ages."><br>
+                
+                <label>Golden Age Tourism Modifier:</label>
+                <input type="number" min=0 max=100 id="goldenAgeTourismModifier" title="This is a percentage based modifier tourism gain during Golden Ages"><br>
+                
+                <label>Golden Age Great Artist Modifier:</label>
+                <input type="number" min=0 max=100 id="goldenAgeArtistModifier" title="This is a percentage based modifier of the rate at which Great Artists are generated in Golden Ages."><br>
+                
+                <label>Golden Age Great Musician Modifier:</label>
+                <input type="number" min=0 max=100 id="goldenAgeMusicianModifier" title="This is a percentage based modifier of the rate at which Great Musicians are generated in Golden Ages."><br>
+                
+                <label>Golden Age Great Writer Modifier:</label>
+                <input type="number" min=-100 max=100 id="goldenAgeWriterModifier" title="This is a percentage based modifier of the rate at which Great Writers are generated in Golden Ages."><br>
+                
+                <label>Extra Embark Moves:</label>
+                <input type="number" min=0 max=10 id="extraEmbarkMoves" title="This is a flat value representing the number of extra moves your units can make while embarked."><br>
+                
+                <label>Natural Wonder First Finder Gold:</label>
+                <input type="number" min=0 max=999 id="naturalWonderFirstGold" title="This is a flat value representing gold gained from finding a natural wonder first."><br>
+                
+                <label>Natural Wonder Subsequent Finders Gold:</label>
+                <input type="number" min=0 max=999 id="naturalWonderSubsequentGold" title="This is a flat value representing gold gained from finding a natural wonder after another player."><br>
+                
+                <label>Natural Wonder Yield Modifier:</label>
+                <input type="number" min=0 max=100 id="naturalWonderYieldModifier" title="This is a percentage based modifier of yields gained from natural wonders."><br>
+                
+                <label>Natural Wonder Happiness Modifier:</label>
+                <input type="number" min=0 max=100 id="naturalWonderHappinessModifier" title="This is a percentage based modifier of happiness gained from natural wonders."><br>
+                
+                <label>Culture Building Yield Change:</label>
+                <input type="number" min=-100 max=100 id="cultureBuildingYieldChange" title="This is a percentage based modifier of the yield of culture from cultural buildings."><br>
+                
+                <label>Combat Bonus VS Higher Tech:</label>
+                <input type="number" min=-100 max=100 id="combatBonusTechnology" title="This is a percentage based modifier of a unit's combat effectiveness when against a Civilization with more technologies."><br>
+               
+                <label>Combat Bonus VS Larger Civilizations:</label>
+                <input type="number" min=-100 max=100 id="combatBonusSize" title="This is a percentage based modifier of a unit's combat effectiveness when against a Civilization with more Cities."><br>
+                
+                <label>Raze Speed Modifier:</label>
+                <input type="number" min=-100 max=100 id="razeSpeedModifier" title="This is a percentage based modifier of the speed at which cities are razed."><br>
+                
+                <label>DoF Great Person Modifier:</label>
+                <input type="number" min=0 max=100 id="dofGreatPersonModifier" title="This is a percentage based modifier of Great Person generation due to Declarations of Friendship."><br>
+                
+                <label>Luxury Happiness Retention:</label>
+                <input type="number" min=0 max=100 id="luxuryRetentionModifier" title="This is a percentage based modifier of happiness retained by trading away your last copy of a luxury resource."><br>
+                
+                <label>Extra Spies:</label>
+                <input type="number" min=0 max=5 id="extraSpies" title="This is a flat value representing the number of extra spies granted to your Civilization."><br>
+                
+                <label>Unresearched Tech Bonus From Kills:</label>
+                <input type="number" min=0 max=100 id="unresearchedKillBonus" title="This is a percentage based modifier science gain when defeating a unit that requires a technology that your Civilization has not researched."><br>
+                
+                <label>Extra Territory from Founded Cities:</label>
+                <input type="number" min=0 max=10 id="extraStartingTerritory" title="This is a flat value representing bonus tiles gained when founding cities."><br>
+                
+                <label>Free Social Policies Per Era:</label>
+                <input type="number" min=0 max=5 id="freePoliciesPerEra" title="This is a flat value representing the number of social policies gained every new technological era."><br>
+                
+                <label>Trade Routes Modifier:</label>
+                <input type="number" min=-100 max=100 id="tradeRoutesModifier" title="This is a percentage based modifier of the number of trade routes available to your Civilization."><br>
+               
+                <label>Trade Route Resource Modifier:</label>
+                <input type="number" min=0 max=100 id="tradeRouteResourceModifier" title="This is a percentage based modifier of gold income from trade routes based on the possession of unique luxury resources."><br>
+                
+                <label>Worker Speed Modifier:</label>
+                <input type="number" min=-100 max=100 id="workerSpeedModifier" title="This is a percentage based modifier of the speed at which workers build tile improvements."><br>
+                 
+                <label>Afraid Minor Influence:</label>
+                <input type="number" min=0 max=10 id="afraidMinorInfluence" title="This is a flat value representing the amount of influence is gained in a city state that is afraid of your Civilization."><br>
+                
+                <label>Land Trade Route Range Bonus:</label>
+                <input type="number" min=0 max=100 id="landTradeRouteRangeBonus" title="This is a percentage based modifier of the range of land trade routes."><br>
+                
+                <label>Trade Route Religion Modifier:</label>
+                <input type="number" min=0 max=100 id="tradeReligionModifier" title="This is a percentage based modifier of religious pressure given from trade routes."><br>
+    
+                <!-- Find out What this Does -->
+                <label>Trade Route Building Modifier:</label>
+                <input type="number" min=0 max=100 id="tradeRouteBuildingModifier" title="..."><br>
+                
+                <label>Free Building:</label>
+                <input type="text" id="freeBuilding" title="This is the reference name of the building automatically constructed in your Civilization's cities."><br>
+                
+                <label>Free Building From Conquest:</label>
+                <input type="text" id="conquestFreeBuilding" title="This is the reference name of the building that will be automatically constructed in conquered cities."><br>
+                
+                <label>Trait Obsoletes At Technology:</label>
+                <input type="text" id="traitObsoleteTech" title="This is the reference name of the technology that will end the use of the trait."><br>
+                
+                <label>Trait Requires Technology:</label>
+                <input type="text" id="traitNeedsTech" title="This is the reference name of the technology that is required to make use of the trait."><br>
+                
+                <label>Fight Well Damaged:</label>
+                <input type="checkbox" id="fightWellDamaged" title="Check this if your Civilizations units do not weaken from taking damage."><br>
+                
+                <label>Friendly Woods as Road:</label>
+                <input type="checkbox" id="friendlyWoodsRoad" title="Check this if your Civilization can use forest tiles as roads."><br>
+                
+                <label>Faster Along River:</label>
+                <input type="checkbox" id="fasterAlongRiver" title="Check this if your Civilization's units are faster when moving alongside a river."><br>
+                
+                <label>Faster On Hills:</label>
+                <input type="checkbox" id="fasterOnHills" title="Check this if your Civilization's units are faster on hill tiles."><br>
+                
+                <label>Immediate Embark:</label>
+                <input type="checkbox" id="immediateEmbark" title="Check this if your Civilization can embark their units from the start of the game."><br>
+                
+                <label>Flat Cost For Embarkation:</label>
+                <input type="checkbox" id="embarkFlatCost" title="Check this if your Civilization's units only have to pay a flat movement cost when embarking or disembarking."><br>
+                
+                <label>No Maintenance on Hills:</label>
+                <input type="checkbox" id="noMaintainHills" title="Check this if your Civilization does not pay to maintain tile improvements on hills."><br>
+                
+                <label>Tech Bonus From Science Buildings:</label>
+                <input type="checkbox" id="scienceFromBuildings" title="Check this if your Civilization gains a lump sum of science from building science buildings in their Capital."><br>
+                
+                <label>Live Without Cities:</label>
+                <input type="checkbox" id="liveNoCities" title="Check this if your Civilization can stay alive after losing its last city."><br>
+                
+                <label>Faith From Unimproved Forests:</label>
+                <input type="checkbox" id="faithUnimprovedForests" title="Check this if your Civilization gains faith from unimproved forest tiles."><br>
+                
+                <label>Bonus Religious Belief:</label>
+                <input type="checkbox" id="bonusBelief" title="Check this if your Civilization can adopt an additional religious belief."><br>
+                
+                <label>Diplomatic Marriage:</label>
+                <input type="checkbox" id="annexCityState" title="Check this if your Civilization can annex city states through Diplomatic Marriage."><br>
+                
+                <label>Cross Mountains After Great General:</label>
+                <input type="checkbox" id="greatGeneralMountains" title="Check this if your Civilization can cross mountains after generating their first Great General."><br>
+                
+                <label>Mayan Calendar:</label>
+                <input type="checkbox" id="mayanCalendar" title="Check this if your Civilization gains the Mayan Calendar bonuses."><br>
+                
+                <label>Cannot Annex:</label>
+                <input type="checkbox" id="noAnnex" title="Check this if your Civilization cannot annex cities."><br>
+                
+                <label>Technology From City Conquest:</label>
+                <input type="checkbox" id="techFromConquest" title="Check this if your Civilization can discover a new technology from conquering cities."><br>
+                
+                <label>River Trade Road:</label>
+                <input type="checkbox" id="riverRoad" title="Check this if your Civilization can use rivers to extend the length of Trade Routes."><br>
+                
+                <label>Anger Free Trespassing:</label>
+                <input type="checkbox" id="noAngerTrespass" title="Check this if your Civilization does not anger city states by moving units into their territory."><br>
+            </p>
+            <h2>Advanced Modifiers</h2>
+            <h5>There are even more modifiers that can be applied to Civilizations. If one of the following catches your eye, click its respective checkbox in order to reveal its fields.</h5>
+            <p>
+                    <label>Combat Bonus From Improvements:</label>
+                    <input type="checkbox" id="isImprovementCombatVisible" title="Check this if your Civilization gains a combat bonus from improvements."><br>
+            </p>
+            <div id="improvementCombatHide" style="display: visible;"> <!--visible none -->
+                <p>
+                    <label>Nearby Improvement Combat Bonus:</label>
+                    <input type="number" min=0 max=100 id="nearbyImprovementCombatBonus" title="This is a percentage based modifier of combat effectiveness when standing near tile improvements."><br>
+
+                    <label>Nearby Improvement Bonus Range:</label>
+                    <input type="number" min=0 max=10 id="nearbyImprovementRange" title="This is the range at which the combat modifier from the previous entry would take effect."><br>
+                    
+                    <label>Improvement Bonus:</label>
+                    <input type="text" id="combatImprovement" title="This is the reference name of the improvement that provides the bonus.">
+                </p>
+            </div>
+            <p>
+                    <label>Free Unit From Technology:</label>
+                    <input type="checkbox" id="isFreeUnitVisible" title="Check this if your Civilization gains a free unit after researching a technology."><br>
+            </p>
+            <div id="freeUnitHide" style="display: visible;"> <!--visible none -->
+                <p>
+                    <label>Free Unit Reference Name:</label>
+                    <input type="text" id="freeUnitReference" title="This is the reference name of the unit that is provided when a technology is researched."><br>
+
+                    <label>Technology Required:</label>
+                    <input type="text" id="freeUnitReqTechnology" title="This is the reference name of the Technology that provides the free unit."><br>
+                </p>
+            </div>
+            <p>
+                <label>Bonus Yield From Strategic Resources:</label>
+                <input type="checkbox" id="bonusStrategicYieldCheck" title="Check this if your Civilization gains a bonus yield from strategic Resources."><br>
+            </p>
+            <div id="bonusStratYieldHide" style="display: visible;"> <!--visible -->
+                <p>
+                    <label>Bonus Yield:</label>
+                    <input type="text" id="yieldFromStrategic" title="This is the reference name of the yield gained from Strategic Resources."><br>
+                    <label>Yield Quantity:</label>
+                    <input type="number" min=0 max=10 id="strategicYieldQuantity" title="This is flat value representing the amount of a specific yield gained from strategic resources."><br>
+                <p>
+            </div>
+            <p>
+                <label>Bonus Yield From Natural Wonders:</label>
+                <input type="checkbox" id="bonusNaturalYieldCheck" title="Check this if your Civilization gains a bonus yield from Natural Wonders."><br>
+
+            </p>
+            <div id="bonusNatWonderHide" style="display: visible;"> <!--visible -->
+                <p>
+                    <label>Bonus Yield:</label>
+                    <input type="text" id="yieldFromNatural" title="This is the reference name of the yield gained from Natural Wonders."><br>
+                    
+                    <label>Yield Quantity:</label>
+                    <input type="number" min=0 max=10 id="naturalYieldQuantity" title="This is flat value representing the amount of a specific yield is gained from Natural Wonders."><br>
+                </p>
+            </div>
+            <p>
+                <Label>Incoming Trade Route Yield:</Label>
+                <input type="checkbox" id="incomingYieldCheck" title="Check this if your Civilization gains a bonus yield from Trade Routes.">
+            </p>
+            <div id="incomingYieldHide" style="display: visible;"> <!--visible -->
+                <p> 
+                    <label>Bonus Yield:</label>
+                    <input type="text" id="yieldFromTrade" title="This is the reference name of the yield gained from International Trade."><br>
+                    
+                    <label>Yield Quantity:</label>
+                    <input type="number" min=0 max=10 id="incomingYieldQuantity" title="This is flat value representing the amount of a specific yield is gained from International Trade.">
+                </p>
+            </div>
+            <p>
+                <label>Outgoing Trade Route Yield:</label>
+                <input type="checkbox" id="outgoingYieldCheck" title="Check this if your Civilization grants other Civilizations a bonus yield while trading with them."><br>
+            </p>
+            <div id="outgoingYieldHide" style="display: visible;"> <!--visible -->
+                <p>
+                    <label>Bonus Yield:</label>
+                    <input type="text" id="outgoingYield" title="This is the reference name of the yield your trade partners will receive."><br>
+
+                    <label>Yield Quantity:</label>
+                    <input type="number" min=0 max=10 id="outgoingYieldQuantity" title="This is flat value representing the amount of a specific yield is gaied by your trade partners."><br>
+
+                </p>
+            </div>
+            
+            <p>
+                <Label>Improvement Yield Change:</Label>
+                <input type="checkbox" id="changeImprovementYieldCheck" title="Check this if your Civilization gains a bonus yield from improvements.">
+            </p>
+            <div id="bonusImprovementYieldHide" style="display: visible;"> <!--visible -->
+                <p> 
+                    <label>Improvement Reference Name:</label>
+                    <input type="text" id="yieldImprovementReferenceName" title="This is the reference name of the Tile Improvement that provides the new yield."><br>
+                    
+                    <label>Bonus Yield:</label>
+                    <input type="text" id="yieldImprovementBonus" title="This is the reference name of the yield gained from tile improvements."><br>
+                    
+                    <label>Yield Quantity:</label>
+                    <input type="number" min=0 max=10 id="improvementYieldQuantity" title="This is flat value representing the amount of a specific yield is gained from a tile improvement.">
+                </p>
+            </div>
+            <p>
+                <Label>Specialist Yield Change:</Label>
+                <input type="checkbox" id="changeSpecialistYieldCheck" title="Check this if your Civilization gains a bonus yield from specialists.">
+            </p>
+            <div id="bonusSpecialistYieldHide" style="display: visible;"> <!--visible -->
+                <p> 
+                    <label>Specialist Reference Name:</label>
+                    <input type="text" id="yieldSpecialistReferenceName" title="This is the reference name of the Specialist that provides the new yield."><br>
+                    
+                    <label>Bonus Yield:</label>
+                    <input type="text" id="yieldSpecialistBonus" title="This is the reference name of the yield gained from specialists."><br>
+                    
+                    <label>Yield Quantity:</label>
+                    <input type="number" min=0 max=10 id="specialistYieldQuantity" title="This is flat value representing the amount of a specific yield is gained from a specialist.">
+                </p>
+            </div>
+            <p>
+                <Label>Free Promotion For Units:</Label>
+                <input type="checkbox" id="freePromotionCheck" title="Check this if your Civilization grants some of its units a free promotion.">
+            </p>
+            <div id="freePromotionHide" style="display: visible;"> <!--visible -->
+                <p> 
+                    <label>Unit Combat Type:</label>
+                    <input type="text" id="unitCombatType" title="This is the type of unit that will receive this promotion."><br>
+                    
+                    <label>Promotion Type:</label>
+                    <input type="text" id="promotionType" title="This is the reference name of the promotion to be gained by the unit."><br>
+                </p>
+            </div>
+            <h2>Lore</h2>
+            <h5>Now to cover both the name of and the description of your trait. These will be how the trait is displayed in the Civilization Select screen.</h5>
+            <p> 
+                <label>Civilization Trait Name:</label>
+                <input type="text" id="traitName" title="This is the name of your trait, as it will appear in game."><br>
+                    
+                <label>Civilization Description:</label><br>
+            </p>
+            <textarea id="traitDescription" draggable="false" rows="5" cols="111"></textarea><br>
+        </form>
+        <br><button type="button" id="generateTrait" onclick="createXML(); return false;">Generate Trait.xml</button><br><br>
+        
+        <textarea id="finalXML" draggable="false" rows="100" cols="111"></textarea><br>
+    </body>
+    <script>
+        function createXML()
+        {
+            var traitReferenceName = document.getElementById("traitReferenceName").value;
+            document.getElementById("finalXML").value='<?xml version="1.0" encoding="utf-8"?> \n';
+            document.getElementById("finalXML").value+=("<!-- I was generated by Protroid's Trait.xml Generator! --> \n");
+            document.getElementById("finalXML").value+=("<GameData> \n");
+            document.getElementById("finalXML").value+=("\t<Traits> \n");
+            document.getElementById("finalXML").value+=("\t\t<Row> \n");
+            document.getElementById("finalXML").value+=('\t\t\t<Type>'+traitReferenceName+'</Type> \n');
+            document.getElementById("finalXML").value+=('\t\t\t<Description>TXT_KEY_'+traitReferenceName+'</Description> \n');
+            document.getElementById("finalXML").value+=('\t\t\t<ShortDescription>TXT_KEY_'+traitReferenceName+'_SHORT</ShortDescription> \n');
+            if(document.getElementById("expModifier").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<LevelExperienceModifier>'+document.getElementById("expModifier").value+'</LevelExperienceModifier> \n');
+            if(document.getElementById("gpModifier").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<GreatPeopleRateModifier>'+document.getElementById("gpModifier").value+'</GreatPeopleRateModifier> \n');
+            if(document.getElementById("scientistModifier").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<GreatScientistRateModifier>'+document.getElementById("scientistModifier").value+'</GreatScientistRateModifier> \n');
+            if(document.getElementById("generalModifier").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<GreatGeneralRateModifier>'+document.getElementById("generalModifier").value+'</GreatGeneralRateModifier> \n');
+            if(document.getElementById("generalExtraBonus").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<GreatGeneralExtraBonus>'+document.getElementById("generalExtraBonus").value+'</GreatGeneralExtraBonus> \n');
+            if(document.getElementById("gpInfluenceGift").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<GreatPersonGiftInfluence>'+document.getElementById("gpInfluenceGift").value+'</GreatPersonGiftInfluence> \n');
+            if(document.getElementById("globalProductionModifier").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<MaxGlobalBuildingProductionModifier>'+document.getElementById("globalProductionModifier").value+'</MaxGlobalBuildingProductionModifier> \n');
+            if(document.getElementById("teamProductionModifier").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<MaxTeamBuildingProductionModifier>'+document.getElementById("teamProductionModifier").value+'</MaxTeamBuildingProductionModifier> \n');
+            if(document.getElementById("playerProductionModifier").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<MaxPlayerBuildingProductionModifier>'+document.getElementById("playerProductionModifier").value+'</MaxPlayerBuildingProductionModifier> \n');
+            if(document.getElementById("cityUnhappinessModifier").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<CityUnhappinessModifier>'+document.getElementById("cityUnhappinessModifier").value+'</CityUnhappinessModifier> \n');
+            if(document.getElementById("populationUnhappinessModifier").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<PopulationUnhappinessModifier>'+document.getElementById("populationUnhappinessModifier").value+'</PopulationUnhappinessModifier> \n');
+            if(document.getElementById("cityStateFriendshipModifier").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<CityStateBonusModifier>'+document.getElementById("cityStateFriendshipModifier").value+'</CityStateBonusModifier> \n');
+            if(document.getElementById("cityStateFriendshipModifier").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<CityStateFriendshipModifier>'+document.getElementById("cityStateFriendshipModifier").value+'</CityStateFriendshipModifier> \n');
+            if(document.getElementById("cityStateCombatModifier").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<CityStateCombatModifier>'+document.getElementById("cityStateCombatModifier").value+'</CityStateCombatModifier> \n');
+            if(document.getElementById("landBarbarianConversion").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<LandBarbarianConversionPercent>'+document.getElementById("landBarbarianConversion").value+'</LandBarbarianConversionPercent> \n');
+            if(document.getElementById("seaBarbarianConversion").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<SeaBarbarianConversionPercent>'+document.getElementById("seaBarbarianConversion").value+'</SeaBarbarianConversionPercent> \n');
+            if(document.getElementById("landMaintainModifier").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<LandUnitMaintenanceModifier>'+document.getElementById("landMaintainModifier").value+'</LandUnitMaintenanceModifier> \n');
+            if(document.getElementById("navalMaintainModifier").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<NavalUnitMaintenanceModifier>'+document.getElementById("navalMaintainModifier").value+'</NavalUnitMaintenanceModifier> \n');
+            if(document.getElementById("capitalBuildingModifier").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<CapitalBuildingModifier>'+document.getElementById("capitalBuildingModifier").value+'</CapitalBuildingModifier> \n');
+            if(document.getElementById("plotBuyCostModifier").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<PlotBuyCostModifier>'+document.getElementById("plotBuyCostModifier").value+'</PlotBuyCostModifier> \n');
+            if(document.getElementById("plotCultureCostModifier").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<PlotCultureCostModifier>'+document.getElementById("plotCultureCostModifier").value+'</PlotCultureCostModifier> \n');
+            if(document.getElementById("cultureFromKills").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<CultureFromKills>'+document.getElementById("cultureFromKills").value+'</CultureFromKills> \n');
+            if(document.getElementById("cityCultureBonus").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<CityCultureBonus>'+document.getElementById("cityCultureBonus").value+'</CityCultureBonus> \n');
+            if(document.getElementById("capitalThemingBonusModifier").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<CapitalThemingBonusModifier>'+document.getElementById("capitalThemingBonusModifier").value+'</CapitalThemingBonusModifier> \n');
+            if(document.getElementById("policyCostModifier").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<PolicyCostModifier>'+document.getElementById("policyCostModifier").value+'</PolicyCostModifier> \n');
+            if(document.getElementById("cityConnectionTradeRouteChange").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<CityConnectionTradeRouteChange>'+document.getElementById("cityConnectionTradeRouteChange").value+'</CityConnectionTradeRouteChange> \n');
+            if(document.getElementById("wonderProductionModifier").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<WonderProductionModifier>'+document.getElementById("wonderProductionModifier").value+'</WonderProductionModifier> \n');
+            if(document.getElementById("plunderModifier").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<PlunderModifier>'+document.getElementById("plunderModifier").value+'</PlunderModifier> \n');
+            if(document.getElementById("improvementMaintainModifier").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<ImprovementMaintenanceModifier>'+document.getElementById("improvementMaintainModifier").value+'</ImprovementMaintenanceModifier> \n');
+            if(document.getElementById("goldenAgeDurationModifier").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<GoldenAgeDurationModifier>'+document.getElementById("goldenAgeDurationModifier").value+'</GoldenAgeDurationModifier> \n');
+            if(document.getElementById("goldenAgeMovementChange").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<GoldenAgeMoveChange>'+document.getElementById("goldenAgeMovementChange").value+'</GoldenAgeMoveChange> \n');
+            if(document.getElementById("goldenAgeCombatModifier").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<GoldenAgeCombatModifier>'+document.getElementById("goldenAgeCombatModifier").value+'</GoldenAgeCombatModifier> \n');
+            if(document.getElementById("goldenAgeTourismModifier").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<GoldenAgeTourismModifier>'+document.getElementById("goldenAgeTourismModifier").value+'</GoldenAgeTourismModifier> \n');
+            if(document.getElementById("goldenAgeArtistModifier").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<GoldenAgeGreatArtistRateModifier>'+document.getElementById("goldenAgeArtistModifier").value+'</GoldenAgeGreatArtistRateModifier> \n');
+            if(document.getElementById("goldenAgeMusicianModifier").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<GoldenAgeGreatMusicianRateModifier>'+document.getElementById("goldenAgeMusicianModifier").value+'</GoldenAgeGreatMusicianRateModifier> \n');
+            if(document.getElementById("goldenAgeWriterModifier").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<GoldenAgeGreatWriterRateModifier>'+document.getElementById("goldenAgeWriterModifier").value+'</GoldenAgeGreatWriterRateModifier> \n');
+            if(document.getElementById("extraEmbarkMoves").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<ExtraEmbarkMoves>'+document.getElementById("extraEmbarkMoves").value+'</ExtraEmbarkMoves> \n');
+            if(document.getElementById("naturalWonderFirstGold").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<NaturalWonderFirstFinderGold>'+document.getElementById("naturalWonderFirstGold").value+'</NaturalWonderFirstFinderGold> \n');
+            if(document.getElementById("naturalWonderSubsequentGold").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<NaturalWonderSubsequentFinderGold>'+document.getElementById("naturalWonderSubsequentGold").value+'</NaturalWonderSubsequentFinderGold> \n');
+            if(document.getElementById("naturalWonderYieldModifier").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<NaturalWonderYieldModifier>'+document.getElementById("naturalWonderYieldModifier").value+'</NaturalWonderYieldModifier> \n');
+            if(document.getElementById("naturalWonderHappinessModifier").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<NaturalWonderHappinessModifier>'+document.getElementById("naturalWonderHappinessModifier").value+'</NaturalWonderHappinessModifier> \n');
+            if(document.getElementById("cultureBuildingYieldChange").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<CultureBuildingYieldChange>'+document.getElementById("cultureBuildingYieldChange").value+'</CultureBuildingYieldChange> \n');
+            if(document.getElementById("combatBonusTechnology").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<CombatBonusVsHigherTech>'+document.getElementById("combatBonusTechnology").value+'</CombatBonusVsHigherTech> \n');
+            if(document.getElementById("combatBonusSize").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<CombatBonusVsLargerCiv>'+document.getElementById("combatBonusSize").value+'</CombatBonusVsLargerCiv> \n');
+            if(document.getElementById("razeSpeedModifier").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<RazeSpeedModifier>'+document.getElementById("razeSpeedModifier").value+'</RazeSpeedModifier> \n');
+            if(document.getElementById("dofGreatPersonModifier").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<DOFGreatPersonModifier>'+document.getElementById("dofGreatPersonModifier").value+'</DOFGreatPersonModifier> \n');
+            if(document.getElementById("luxuryRetentionModifier").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<LuxuryHappinessRetention>'+document.getElementById("luxuryRetentionModifier").value+'</LuxuryHappinessRetention> \n');
+            if(document.getElementById("extraSpies").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<ExtraSpies>'+document.getElementById("extraSpies").value+'</ExtraSpies> \n');
+            if(document.getElementById("unresearchedKillBonus").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<UnresearchedTechBonusFromKills>'+document.getElementById("unresearchedKillBonus").value+'</UnresearchedTechBonusFromKills> \n');
+            if(document.getElementById("extraStartingTerritory").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<ExtraFoundedCityTerritoryClaimRange>'+document.getElementById("extraStartingTerritory").value+'</ExtraFoundedCityTerritoryClaimRange> \n');
+            if(document.getElementById("freePoliciesPerEra").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<FreeSocialPoliciesPerEra>'+document.getElementById("freePoliciesPerEra").value+'</FreeSocialPoliciesPerEra> \n');
+            if(document.getElementById("tradeRoutesModifier").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<NumTradeRoutesModifier>'+document.getElementById("tradeRoutesModifier").value+'</NumTradeRoutesModifier> \n');
+            if(document.getElementById("tradeRouteResourceModifier").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<TradeRouteResourceModifier>'+document.getElementById("tradeRouteResourceModifier").value+'</TradeRouteResourceModifier> \n');
+            if(document.getElementById("workerSpeedModifier").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<WorkerSpeedModifier>'+document.getElementById("workerSpeedModifier").value+'</WorkerSpeedModifier> \n');
+            if(document.getElementById("afraidMinorInfluence").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<AfraidMinorPerTurnInfluence>'+document.getElementById("afraidMinorInfluence").value+'</AfraidMinorPerTurnInfluence> \n');
+            if(document.getElementById("landTradeRouteRangeBonus").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<LandTradeRouteRangeBonus>'+document.getElementById("landTradeRouteRangeBonus").value+'</LandTradeRouteRangeBonus> \n');
+            if(document.getElementById("tradeReligionModifier").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<TradeReligionModifier>'+document.getElementById("tradeReligionModifier").value+'</TradeReligionModifier> \n');
+            if(document.getElementById("tradeRouteBuildingModifier").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<TradeBuildingModifier>'+document.getElementById("tradeRouteBuildingModifier").value+'</TradeBuildingModifier> \n');
+            if(document.getElementById("traitObsoleteTech").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<ObsoleteTech>'+document.getElementById("traitObsoleteTech").value+'</ObsoleteTech> \n');
+            if(document.getElementById("traitNeedsTech").value!="")
+                document.getElementById("finalXML").value+=('\t\t\t<PrereqTech>'+document.getElementById("traitNeedsTech").value+'</PrereqTech> \n');
+            if(document.getElementById("fightWellDamaged").checked)
+                document.getElementById("finalXML").value+=('\t\t\t<FightWellDamaged>1</FightWellDamaged> \n');
+            if(document.getElementById("friendlyWoodsRoad").checked)
+                document.getElementById("finalXML").value+=('\t\t\t<MoveFriendlyWoodsAsRoad>1</MoveFriendlyWoodsAsRoad> \n');
+            if(document.getElementById("fasterAlongRiver").checked)
+                document.getElementById("finalXML").value+=('\t\t\t<FasterAlongRiver>1</FasterAlongRiver> \n');
+            if(document.getElementById("fasterOnHills").checked)
+                document.getElementById("finalXML").value+=('\t\t\t<FasterInHills>1</FasterInHills> \n');
+            if(document.getElementById("immediateEmbark").checked)
+                document.getElementById("finalXML").value+=('\t\t\t<EmbarkedAllWater>1</EmbarkedAllWater> \n');
+            if(document.getElementById("embarkFlatCost").checked)
+                document.getElementById("finalXML").value+=('\t\t\t<EmbarkedToLandFlatCost>1</EmbarkedToLandFlatCost> \n');
+            if(document.getElementById("noMaintainHills").checked)
+                document.getElementById("finalXML").value+=('\t\t\t<NoHillsImprovementMaintenance>1</NoHillsImprovementMaintenance> \n');
+            if(document.getElementById("scienceFromBuildings").checked)
+                document.getElementById("finalXML").value+=('\t\t\t<TechBoostFromCapitalScienceBuildings>1</TechBoostFromCapitalScienceBuildings> \n');
+            if(document.getElementById("liveNoCities").checked)
+                document.getElementById("finalXML").value+=('\t\t\t<StaysAliveZeroCities>1</StaysAliveZeroCities> \n');
+            if(document.getElementById("faithUnimprovedForests").checked)
+                document.getElementById("finalXML").value+=('\t\t\t<FaithFromUnimprovedForest>1</FaithFromUnimprovedForest> \n');
+            if(document.getElementById("bonusBelief").checked)
+                document.getElementById("finalXML").value+=('\t\t\t<BonusReligiousBelief>1</BonusReligiousBelief> \n');
+            if(document.getElementById("annexCityState").checked)
+                document.getElementById("finalXML").value+=('\t\t\t<AbleToAnnexCityStates>1</AbleToAnnexCityStates> \n');
+            if(document.getElementById("greatGeneralMountains").checked)
+                document.getElementById("finalXML").value+=('\t\t\t<CrossesMountainsAfterGreatGeneral>1</CrossesMountainsAfterGreatGeneral> \n');
+            if(document.getElementById("mayanCalendar").checked)
+                document.getElementById("finalXML").value+=('\t\t\t<MayaCalendarBonuses>1</MayaCalendarBonuses> \n');
+            if(document.getElementById("noAnnex").checked)
+                document.getElementById("finalXML").value+=('\t\t\t<NoAnnexing>1</NoAnnexing> \n');
+            if(document.getElementById("techFromConquest").checked)
+                document.getElementById("finalXML").value+=('\t\t\t<TechFromCityConquer>1</TechFromCityConquer> \n');
+            if(document.getElementById("riverRoad").checked)
+                document.getElementById("finalXML").value+=('\t\t\t<RiverTradeRoad>1</RiverTradeRoad> \n');
+            if(document.getElementById("noAngerTrespass").checked)
+                document.getElementById("finalXML").value+=('\t\t\t<AngerFreeIntrusionOfCityStates>1</AngerFreeIntrusionOfCityStates> \n');
+            if(document.getElementById("isImprovementCombatVisible").checked)
+            {
+                document.getElementById("finalXML").value+=('\t\t\t<NearbyImprovementCombatBonus>'+document.getElementById("nearbyImprovementCombatBonus").value+'</NearbyImprovementCombatBonus> \n');
+                document.getElementById("finalXML").value+=('\t\t\t<NearbyImprovementBonusRange>'+document.getElementById("nearbyImprovementRange").value+'</NearbyImprovementBonusRange> \n');
+                document.getElementById("finalXML").value+=('\t\t\t<NearbyImprovementBonusRange>'+document.getElementById("combatImprovement").value+'</NearbyImprovementBonusRange> \n');
+            }
+            if(document.getElementById("isFreeUnitVisible").checked)
+            {
+                document.getElementById("finalXML").value+=('\t\t\t<FreeUnit>'+document.getElementById("freeUnitReference").value+'</FreeUnit> \n');
+                document.getElementById("finalXML").value+=('\t\t\t<FreeUnitPrereqTech>'+document.getElementById("freeUnitReqTechnology").value+'</FreeUnitPrereqTech> \n');
+            }
+            document.getElementById("finalXML").value+=("\t\t</Row> \n");
+            document.getElementById("finalXML").value+=("\t</Traits> \n");
+            if(document.getElementById("bonusStrategicYieldCheck").checked)
+            {
+                document.getElementById("finalXML").value+=('\t<Trait_YieldChangesStrategicResources> \n');
+                document.getElementById("finalXML").value+=('\t\t<Row> \n');
+                document.getElementById("finalXML").value+=('\t\t\t<TraitType>'+traitReferenceName+'</TraitType> \n');
+                document.getElementById("finalXML").value+=('\t\t\t<YieldType>'+document.getElementById("yieldFromStrategic").value+'</YieldType> \n');
+                document.getElementById("finalXML").value+=('\t\t\t<Yield>'+document.getElementById("strategicYieldQuantity").value+'</Yield> \n');
+                document.getElementById("finalXML").value+=('\t\t</Row> \n');
+                document.getElementById("finalXML").value+=('\t</Trait_YieldChangesStrategicResources> \n');
+            }
+            if(document.getElementById("bonusNaturalYieldCheck").checked)
+            {
+                document.getElementById("finalXML").value+=('\t<Trait_YieldChangesNaturalWonder> \n');
+                document.getElementById("finalXML").value+=('\t\t<Row> \n');
+                document.getElementById("finalXML").value+=('\t\t\t<TraitType>'+traitReferenceName+'</TraitType> \n');
+                document.getElementById("finalXML").value+=('\t\t\t<YieldType>'+document.getElementById("yieldFromNatural").value+'</YieldType> \n');
+                document.getElementById("finalXML").value+=('\t\t\t<Yield>'+document.getElementById("naturalYieldQuantity").value+'</Yield> \n');
+                document.getElementById("finalXML").value+=('\t\t</Row> \n');
+                document.getElementById("finalXML").value+=('\t</Trait_YieldChangesNaturalWonder> \n');
+            }
+            if(document.getElementById("incomingYieldCheck").checked)
+            {
+                document.getElementById("finalXML").value+=('\t<Trait_YieldChangesPerTradePartner> \n');
+                document.getElementById("finalXML").value+=('\t\t<Row> \n');
+                document.getElementById("finalXML").value+=('\t\t\t<TraitType>'+traitReferenceName+'</TraitType> \n');
+                document.getElementById("finalXML").value+=('\t\t\t<YieldType>'+document.getElementById("yieldFromTrade").value+'</YieldType> \n');
+                document.getElementById("finalXML").value+=('\t\t\t<Yield>'+document.getElementById("incomingYieldQuantity").value+'</Yield> \n');
+                document.getElementById("finalXML").value+=('\t\t</Row> \n');
+                document.getElementById("finalXML").value+=('\t</Trait_YieldChangesPerTradePartner> \n');
+            }
+            if(document.getElementById("outgoingYieldCheck").checked)
+            {
+                document.getElementById("finalXML").value+=('\t<Trait_YieldChangesIncomingTradeRoute> \n');
+                document.getElementById("finalXML").value+=('\t\t<Row> \n');
+                document.getElementById("finalXML").value+=('\t\t\t<TraitType>'+traitReferenceName+'</TraitType> \n');
+                document.getElementById("finalXML").value+=('\t\t\t<YieldType>'+document.getElementById("outgoingYield").value+'</YieldType> \n');
+                document.getElementById("finalXML").value+=('\t\t\t<Yield>'+document.getElementById("outgoingYieldQuantity").value+'</Yield> \n');
+                document.getElementById("finalXML").value+=('\t\t</Row> \n');
+                document.getElementById("finalXML").value+=('\t</Trait_YieldChangesIncomingTradeRoute> \n');
+            }
+            if(document.getElementById("changeImprovementYieldCheck").checked)
+            {
+                document.getElementById("finalXML").value+=('\t<Trait_ImprovementYieldChanges> \n');
+                document.getElementById("finalXML").value+=('\t\t<Row> \n');
+                document.getElementById("finalXML").value+=('\t\t\t<TraitType>'+traitReferenceName+'</TraitType> \n');
+                document.getElementById("finalXML").value+=('\t\t\t<ImprovementType>'+document.getElementById("yieldImprovementReferenceName").value+'</ImprovementType> \n');
+                document.getElementById("finalXML").value+=('\t\t\t<YieldType>'+document.getElementById("yieldImprovementBonus").value+'</YieldType> \n');
+                document.getElementById("finalXML").value+=('\t\t\t<Yield>'+document.getElementById("improvementYieldQuantity").value+'</Yield> \n');
+                document.getElementById("finalXML").value+=('\t\t</Row> \n');
+                document.getElementById("finalXML").value+=('\t</Trait_ImprovementYieldChanges> \n');
+            }
+            if(document.getElementById("changeSpecialistYieldCheck").checked)
+            {
+                document.getElementById("finalXML").value+=('\t<Trait_SpecialistYieldChanges> \n');
+                document.getElementById("finalXML").value+=('\t\t<Row> \n');
+                document.getElementById("finalXML").value+=('\t\t\t<TraitType>'+traitReferenceName+'</TraitType> \n');
+                document.getElementById("finalXML").value+=('\t\t\t<ImprovementType>'+document.getElementById("yieldImprovementReferenceName").value+'</ImprovementType> \n');
+                document.getElementById("finalXML").value+=('\t\t\t<YieldType>'+document.getElementById("yieldSpecialistBonus").value+'</YieldType> \n');
+                document.getElementById("finalXML").value+=('\t\t\t<Yield>'+document.getElementById("specialistYieldQuantity").value+'</Yield> \n');
+                document.getElementById("finalXML").value+=('\t\t</Row> \n');
+                document.getElementById("finalXML").value+=('\t</Trait_SpecialistYieldChanges> \n');
+            }
+            if(document.getElementById("changeSpecialistYieldCheck").checked)
+            {
+                document.getElementById("finalXML").value+=('\t<Trait_FreePromotionUnitCombats> \n');
+                document.getElementById("finalXML").value+=('\t\t<Row> \n');
+                document.getElementById("finalXML").value+=('\t\t\t<TraitType>'+traitReferenceName+'</TraitType> \n');
+                document.getElementById("finalXML").value+=('\t\t\t<UnitCombatType>'+document.getElementById("unitCombatType").value+'</UnitCombatType> \n');
+                document.getElementById("finalXML").value+=('\t\t\t<PromotionType>'+document.getElementById("promotionType").value+'</PromotionType> \n');
+                document.getElementById("finalXML").value+=('\t\t</Row> \n');
+                document.getElementById("finalXML").value+=('\t</Trait_FreePromotionUnitCombats> \n');
+            }
+            document.getElementById("finalXML").value+=("\t<Language_en_US> \n");
+            document.getElementById("finalXML").value+=('\t\t<Row Tag="TXT_KEY_'+traitReferenceName+'"> \n');
+            document.getElementById("finalXML").value+=("\t\t\t<Text>"+document.getElementById("traitDescription").value+"</Text> \n");
+            document.getElementById("finalXML").value+=('\t\t</Row> \n');
+            document.getElementById("finalXML").value+=('\t\t<Row Tag="TXT_KEY_'+traitReferenceName+'_SHORT"> \n');
+            document.getElementById("finalXML").value+=("\t\t\t<Text>"+document.getElementById("traitName").value+"</Text> \n");
+            document.getElementById("finalXML").value+=('\t\t</Row> \n');
+            document.getElementById("finalXML").value+=("\t</Language_en_US> \n");
+            document.getElementById("finalXML").value+=("</GameData> \n");
+        }
+    
+    </script>
+</html>
