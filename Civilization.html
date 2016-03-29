@@ -9,10 +9,9 @@
     </head>
     <body>
                 
-        <a href="screenshots/Uffizi.jpg">
-            <img title="The painter is not simply someone who looks and who sees. Above all, the artist is someone who exposes a personal vision by rendering it visible." src="Screenshots/Uffizi.jpg"/>
+        <a href="screenshots/GeneratorHeaderTitle.png">
+            <img title="Civilization Generator" src="Screenshots/GeneratorHeaderTitle.png" onclick="location.href='index.html'" />
         </a>
-        
        <ul>
             <li><a href="#home" onclick="location.href='index.html'">Home</a></li>
             <li class="dropdown">
@@ -54,15 +53,15 @@
             <input type="number" min = 0 value = 0 id="portraitIndex" title="This is the index of your civilization's icon."><br>
             
             
-            <h5>Images are the next part. It is important to note that Civilization V only accepts .dds files, as .dds files are the coolest. Write the names of your images for your Map and your Dawn of Man image below, including the .dds tag. Your file should end up looking like; MapBabylon512.dds or DOM_Nebuchadnezzar.dds. Note that after you get your file, you need to set all of your image files to SetVFS=False in the Civilization V Modbuddy.</h5>
+            <h5>Images are the next part. It is important to note that Civilization V only accepts .dds files, as .dds files are the coolest. Write the names of your images for your Map and your Dawn of Man image below, including the .dds tag. Your file should end up looking like; MapBabylon512.dds or DOM_Nebuchadnezzar.dds. Note that after you get your file, you need to set all of your image files to SetVFS=True in the Civilization V Modbuddy.</h5>
             
             Map Image:
-            <input type="text" id="mapImageName" title="This is the name of the .dds file that contains your Civilization's map. If left blank, this will be Washington's Map image."><br>
+            <input type="text" id="mapImageName" title="This is the name of the .dds file that contains your Civilization's map."><br>
             
             Dawn of Man Image:
-            <input type="text" id="domImageName" title="This is the name of the .dds file that contains your Civilization's Dawn of Man image. If left blank, this will be Washington's DoM image."><br>
+            <input type="text" id="domImageName" title="This is the name of the .dds file that contains your Civilization's Dawn of Man image."><br>
             
-            <h5>If you have a voice actor for your Dawn of Man Speech, here is where you make them talk. It is okay to leave this part blank, as audio is not required to build the mod, but remember to set VFS=False again in Modbuddy like you did with the images!</h5>
+            <h5>If you have a voice actor for your Dawn of Man Speech, here is where you make them talk. It is okay to leave this part blank, as audio is not required to build the mod, but remember to set VFS=True again in Modbuddy like you did with the images!</h5>
             
             Dawn of Man Voice Over:
             <input type="text" id="domVoice" title="This is the name of the .mp3 file that your voice actor recorded for the DOM."><br>
