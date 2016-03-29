@@ -288,9 +288,9 @@
             <h5>There are even more modifiers that can be applied to Civilizations. If one of the following catches your eye, click its respective checkbox in order to reveal its fields.</h5>
             <p>
                     <label>Combat Bonus From Improvements:</label>
-                    <input type="checkbox" id="isImprovementCombatVisible" title="Check this if your Civilization gains a combat bonus from improvements."><br>
+                    <input type="checkbox" id="isImprovementCombatCheck" onchange="showField(); return false;" title="Check this if your Civilization gains a combat bonus from improvements."><br>
             </p>
-            <div id="improvementCombatHide" style="display: visible;"> <!--visible none -->
+            <div id="isImprovementCombatCheckView" style="display: none;"> <!--visible none -->
                 <p>
                     <label>Nearby Improvement Combat Bonus:</label>
                     <input type="number" min=0 max=100 id="nearbyImprovementCombatBonus" title="This is a percentage based modifier of combat effectiveness when standing near tile improvements."><br>
@@ -304,9 +304,9 @@
             </div>
             <p>
                     <label>Free Unit From Technology:</label>
-                    <input type="checkbox" id="isFreeUnitVisible" title="Check this if your Civilization gains a free unit after researching a technology."><br>
+                    <input type="checkbox" id="isFreeUnitCheck" onchange="showField(); return false;" title="Check this if your Civilization gains a free unit after researching a technology."><br>
             </p>
-            <div id="freeUnitHide" style="display: visible;"> <!--visible none -->
+            <div id="isFreeUnitCheckView" style="display: none;"> <!--visible none -->
                 <p>
                     <label>Free Unit Reference Name:</label>
                     <input type="text" id="freeUnitReference" title="This is the reference name of the unit that is provided when a technology is researched."><br>
@@ -317,9 +317,9 @@
             </div>
             <p>
                 <label>Bonus Yield From Strategic Resources:</label>
-                <input type="checkbox" id="bonusStrategicYieldCheck" title="Check this if your Civilization gains a bonus yield from strategic Resources."><br>
+                <input type="checkbox" id="isBonusStrategicYieldCheck" onchange="showField(); return false;" title="Check this if your Civilization gains a bonus yield from strategic Resources."><br>
             </p>
-            <div id="bonusStratYieldHide" style="display: visible;"> <!--visible -->
+            <div id="isBonusStrategicYieldCheckView" style="display: none;"> <!--visible -->
                 <p>
                     <label>Bonus Yield:</label>
                     <input type="text" id="yieldFromStrategic" title="This is the reference name of the yield gained from Strategic Resources."><br>
@@ -329,10 +329,10 @@
             </div>
             <p>
                 <label>Bonus Yield From Natural Wonders:</label>
-                <input type="checkbox" id="bonusNaturalYieldCheck" title="Check this if your Civilization gains a bonus yield from Natural Wonders."><br>
+                <input type="checkbox" id="isBonusNaturalYieldCheck" onchange="showField(); return false;" title="Check this if your Civilization gains a bonus yield from Natural Wonders."><br>
 
             </p>
-            <div id="bonusNatWonderHide" style="display: visible;"> <!--visible -->
+            <div id="isBonusNaturalYieldCheckView" style="display: none;"> <!--visible -->
                 <p>
                     <label>Bonus Yield:</label>
                     <input type="text" id="yieldFromNatural" title="This is the reference name of the yield gained from Natural Wonders."><br>
@@ -343,9 +343,9 @@
             </div>
             <p>
                 <Label>Incoming Trade Route Yield:</Label>
-                <input type="checkbox" id="incomingYieldCheck" title="Check this if your Civilization gains a bonus yield from Trade Routes.">
+                <input type="checkbox" id="isIncomingYieldCheck" onchange="showField(); return false;" title="Check this if your Civilization gains a bonus yield from Trade Routes.">
             </p>
-            <div id="incomingYieldHide" style="display: visible;"> <!--visible -->
+            <div id="isIncomingYieldCheckView" style="display: none;"> <!--visible -->
                 <p> 
                     <label>Bonus Yield:</label>
                     <input type="text" id="yieldFromTrade" title="This is the reference name of the yield gained from International Trade."><br>
@@ -356,9 +356,9 @@
             </div>
             <p>
                 <label>Outgoing Trade Route Yield:</label>
-                <input type="checkbox" id="outgoingYieldCheck" title="Check this if your Civilization grants other Civilizations a bonus yield while trading with them."><br>
+                <input type="checkbox" id="isOutgoingYieldCheck" onchange="showField(); return false;" title="Check this if your Civilization grants other Civilizations a bonus yield while trading with them."><br>
             </p>
-            <div id="outgoingYieldHide" style="display: visible;"> <!--visible -->
+            <div id="isOutgoingYieldCheckView" style="display: none;"> <!--visible -->
                 <p>
                     <label>Bonus Yield:</label>
                     <input type="text" id="outgoingYield" title="This is the reference name of the yield your trade partners will receive."><br>
@@ -368,12 +368,11 @@
 
                 </p>
             </div>
-            
             <p>
                 <Label>Improvement Yield Change:</Label>
-                <input type="checkbox" id="changeImprovementYieldCheck" title="Check this if your Civilization gains a bonus yield from improvements.">
+                <input type="checkbox" id="isChangeImprovementYieldCheck" onchange="showField(); return false;" title="Check this if your Civilization gains a bonus yield from improvements.">
             </p>
-            <div id="bonusImprovementYieldHide" style="display: visible;"> <!--visible -->
+            <div id="isChangeImprovementYieldCheckView" style="display: none;"> <!--visible -->
                 <p> 
                     <label>Improvement Reference Name:</label>
                     <input type="text" id="yieldImprovementReferenceName" title="This is the reference name of the Tile Improvement that provides the new yield."><br>
@@ -387,9 +386,9 @@
             </div>
             <p>
                 <Label>Specialist Yield Change:</Label>
-                <input type="checkbox" id="changeSpecialistYieldCheck" title="Check this if your Civilization gains a bonus yield from specialists.">
+                <input type="checkbox" id="isChangeSpecialistYieldCheck" onchange="showField(); return false;" title="Check this if your Civilization gains a bonus yield from specialists.">
             </p>
-            <div id="bonusSpecialistYieldHide" style="display: visible;"> <!--visible -->
+            <div id="isChangeSpecialistYieldCheckView" style="display: none;"> <!--visible -->
                 <p> 
                     <label>Specialist Reference Name:</label>
                     <input type="text" id="yieldSpecialistReferenceName" title="This is the reference name of the Specialist that provides the new yield."><br>
@@ -403,9 +402,9 @@
             </div>
             <p>
                 <Label>Free Promotion For Units:</Label>
-                <input type="checkbox" id="freePromotionCheck" title="Check this if your Civilization grants some of its units a free promotion.">
+                <input type="checkbox" id="isFreePromotionCheck" onchange="showField(); return false;" title="Check this if your Civilization grants some of its units a free promotion.">
             </p>
-            <div id="freePromotionHide" style="display: visible;"> <!--visible -->
+            <div id="isFreePromotionCheckView" style="display: none;"> <!--visible -->
                 <p> 
                     <label>Unit Combat Type:</label>
                     <input type="text" id="unitCombatType" title="This is the type of unit that will receive this promotion."><br>
@@ -596,20 +595,20 @@
                 document.getElementById("finalXML").value+=('\t\t\t<RiverTradeRoad>1</RiverTradeRoad> \n');
             if(document.getElementById("noAngerTrespass").checked)
                 document.getElementById("finalXML").value+=('\t\t\t<AngerFreeIntrusionOfCityStates>1</AngerFreeIntrusionOfCityStates> \n');
-            if(document.getElementById("isImprovementCombatVisible").checked)
+            if(document.getElementById("isImprovementCombatCheck").checked)
             {
                 document.getElementById("finalXML").value+=('\t\t\t<NearbyImprovementCombatBonus>'+document.getElementById("nearbyImprovementCombatBonus").value+'</NearbyImprovementCombatBonus> \n');
                 document.getElementById("finalXML").value+=('\t\t\t<NearbyImprovementBonusRange>'+document.getElementById("nearbyImprovementRange").value+'</NearbyImprovementBonusRange> \n');
                 document.getElementById("finalXML").value+=('\t\t\t<NearbyImprovementBonusRange>'+document.getElementById("combatImprovement").value+'</NearbyImprovementBonusRange> \n');
             }
-            if(document.getElementById("isFreeUnitVisible").checked)
+            if(document.getElementById("isFreeUnitCheck").checked)
             {
                 document.getElementById("finalXML").value+=('\t\t\t<FreeUnit>'+document.getElementById("freeUnitReference").value+'</FreeUnit> \n');
                 document.getElementById("finalXML").value+=('\t\t\t<FreeUnitPrereqTech>'+document.getElementById("freeUnitReqTechnology").value+'</FreeUnitPrereqTech> \n');
             }
             document.getElementById("finalXML").value+=("\t\t</Row> \n");
             document.getElementById("finalXML").value+=("\t</Traits> \n");
-            if(document.getElementById("bonusStrategicYieldCheck").checked)
+            if(document.getElementById("isBonusStrategicYieldCheck").checked)
             {
                 document.getElementById("finalXML").value+=('\t<Trait_YieldChangesStrategicResources> \n');
                 document.getElementById("finalXML").value+=('\t\t<Row> \n');
@@ -619,7 +618,7 @@
                 document.getElementById("finalXML").value+=('\t\t</Row> \n');
                 document.getElementById("finalXML").value+=('\t</Trait_YieldChangesStrategicResources> \n');
             }
-            if(document.getElementById("bonusNaturalYieldCheck").checked)
+            if(document.getElementById("isBonusNaturalYieldCheck").checked)
             {
                 document.getElementById("finalXML").value+=('\t<Trait_YieldChangesNaturalWonder> \n');
                 document.getElementById("finalXML").value+=('\t\t<Row> \n');
@@ -629,7 +628,7 @@
                 document.getElementById("finalXML").value+=('\t\t</Row> \n');
                 document.getElementById("finalXML").value+=('\t</Trait_YieldChangesNaturalWonder> \n');
             }
-            if(document.getElementById("incomingYieldCheck").checked)
+            if(document.getElementById("isIncomingYieldCheck").checked)
             {
                 document.getElementById("finalXML").value+=('\t<Trait_YieldChangesPerTradePartner> \n');
                 document.getElementById("finalXML").value+=('\t\t<Row> \n');
@@ -639,7 +638,7 @@
                 document.getElementById("finalXML").value+=('\t\t</Row> \n');
                 document.getElementById("finalXML").value+=('\t</Trait_YieldChangesPerTradePartner> \n');
             }
-            if(document.getElementById("outgoingYieldCheck").checked)
+            if(document.getElementById("isOutgoingYieldCheck").checked)
             {
                 document.getElementById("finalXML").value+=('\t<Trait_YieldChangesIncomingTradeRoute> \n');
                 document.getElementById("finalXML").value+=('\t\t<Row> \n');
@@ -649,7 +648,7 @@
                 document.getElementById("finalXML").value+=('\t\t</Row> \n');
                 document.getElementById("finalXML").value+=('\t</Trait_YieldChangesIncomingTradeRoute> \n');
             }
-            if(document.getElementById("changeImprovementYieldCheck").checked)
+            if(document.getElementById("isChangeImprovementYieldCheck").checked)
             {
                 document.getElementById("finalXML").value+=('\t<Trait_ImprovementYieldChanges> \n');
                 document.getElementById("finalXML").value+=('\t\t<Row> \n');
@@ -660,7 +659,7 @@
                 document.getElementById("finalXML").value+=('\t\t</Row> \n');
                 document.getElementById("finalXML").value+=('\t</Trait_ImprovementYieldChanges> \n');
             }
-            if(document.getElementById("changeSpecialistYieldCheck").checked)
+            if(document.getElementById("isChangeSpecialistYieldCheck").checked)
             {
                 document.getElementById("finalXML").value+=('\t<Trait_SpecialistYieldChanges> \n');
                 document.getElementById("finalXML").value+=('\t\t<Row> \n');
@@ -671,7 +670,7 @@
                 document.getElementById("finalXML").value+=('\t\t</Row> \n');
                 document.getElementById("finalXML").value+=('\t</Trait_SpecialistYieldChanges> \n');
             }
-            if(document.getElementById("changeSpecialistYieldCheck").checked)
+            if(document.getElementById("isFreePromotionCheck").checked)
             {
                 document.getElementById("finalXML").value+=('\t<Trait_FreePromotionUnitCombats> \n');
                 document.getElementById("finalXML").value+=('\t\t<Row> \n');
@@ -690,6 +689,63 @@
             document.getElementById("finalXML").value+=('\t\t</Row> \n');
             document.getElementById("finalXML").value+=("\t</Language_en_US> \n");
             document.getElementById("finalXML").value+=("</GameData> \n");
+        }
+        
+        function showField()
+        {
+            //Show / Hide Unit Combat Bonus Improvements
+            if(document.getElementById("isImprovementCombatCheck").checked)
+                document.getElementById("isImprovementCombatCheckView").style="display: visible;";
+            else
+                document.getElementById("isImprovementCombatCheckView").style="display: none;";
+            
+            //Show / Hide Free Unit From Tech   isBonusStrategicYieldCheck
+            if(document.getElementById("isFreeUnitCheck").checked)
+                document.getElementById("isFreeUnitCheckView").style="display: visible;";
+            else
+                document.getElementById("isFreeUnitCheckView").style="display: none;";
+            
+            //Show / Hide Strategic Yield Bonuses   
+            if(document.getElementById("isBonusStrategicYieldCheck").checked)
+                document.getElementById("isBonusStrategicYieldCheckView").style="display: visible;";
+            else
+                document.getElementById("isBonusStrategicYieldCheckView").style="display: none;";
+            
+            //Show / Hide Natural Wonder Yield Bonuses   
+            if(document.getElementById("isBonusNaturalYieldCheck").checked)
+                document.getElementById("isBonusNaturalYieldCheckView").style="display: visible;";
+            else
+                document.getElementById("isBonusNaturalYieldCheckView").style="display: none;";
+            
+            //Show / Hide Incoming Trade Yield 
+            if(document.getElementById("isIncomingYieldCheck").checked)
+                document.getElementById("isIncomingYieldCheckView").style="display: visible;";
+            else
+                document.getElementById("isIncomingYieldCheckView").style="display: none;";
+            
+            //Show / Hide Outgoing Trade Yield 
+            if(document.getElementById("isOutgoingYieldCheck").checked)
+                document.getElementById("isOutgoingYieldCheckView").style="display: visible;";
+            else
+                document.getElementById("isOutgoingYieldCheckView").style="display: none;";
+            
+            //Show / Hide Improvement Yield Bonuses 
+            if(document.getElementById("isChangeImprovementYieldCheck").checked)
+                document.getElementById("isChangeImprovementYieldCheckView").style="display: visible;";
+            else
+                document.getElementById("isChangeImprovementYieldCheckView").style="display: none;";
+            
+            //Show / Hide Specialist Yield Change 
+            if(document.getElementById("isChangeSpecialistYieldCheck").checked)
+                document.getElementById("isChangeSpecialistYieldCheckView").style="display: visible;";
+            else
+                document.getElementById("isChangeSpecialistYieldCheckView").style="display: none;";
+            
+            //Show / Hide Free Promotion
+            if(document.getElementById("isFreePromotionCheck").checked)
+                document.getElementById("isFreePromotionCheckView").style="display: visible;";
+            else
+                document.getElementById("isFreePromotionCheckView").style="display: none;";
         }
     
     </script>
