@@ -30,276 +30,346 @@
         <h2>Civilization</h2>
         
         
-        <!-- Civilization Table-->
+        <!-- Civilization Table
+
+<form>
+            <h5>Any Civilization needs a strong willed Leader to lead them into prosperity. In terms of Civilization V, the Leader.xml page is used to configure and develop the artificial intelligence of your civilization, determining how the AI will generally respond to trade, development, and war. Before any of that though, lets start with your leader's reference name. This is so your Civilization will know what Leader is thiers. The format for leader reference names in Civilization V is; LEADER_MY_LEADER.</h5>
+            
+            <p>
+                <label>Leader Reference Name:</label>
+                <input type="text" id="leaderReferenceName" title="The Reference Name of your Leader."><br>
+            </p>
+-->
         <form>
             <h5>Any civilization needs some basic information before it can be created. The most prominent being the need for a name! Civilization V and its modifications follow a general naming scheme. America is noted as CIVILIZATION_AMERICA and Korea is listed as CIVILIZATION_KOREA, to provide two examples. Your civilization's name should also follow this form; CIVILIZATION_MY_CIV</h5>
             
-            Reference Name:
-            <input type="text" id="referenceName" title="The Reference Name is how your Civilization is recognized by Civilization V."><br>
+            <p>
+                <label>Civilization Reference Name:</label>
+                <input type="text" id="referenceName" title="The Reference Name is how your Civilization is recognized by Civilization V."><br>
+            </p>
             
             <h5>Now that we have a name, we are also going to need some art defines. These add flair to your civilization's cities, as otherwise it would be confusing to see Japan suddenly adopt Greco-Roman architecture! These come provided within Civilization V, so select the one that you want in the dropdown menu.</h5>
             
             <h5>The Icon Atlas is where your icons will be stored. All Vanilla Civilizations can find their Icon Atlas in CIV_COLOR_ATLAS and their Alpha Atlas in CIV_ALPHA_ATLAS.</h5>
             
-            Icon Atlas:
-            <input type="text" id="iconAtlas" title="This is the reference name of the file that contains your Civilization's icon atlas."><br>
+            <p>
+                <label>Icon Atlas:</label>
+                <input type="text" id="iconAtlas" title="This is the reference name of the file that contains your Civilization's icon atlas."><br>
+
+                <label>Icon Alpha Atlas:</label>
+                <input type="text" id="iconAlphaAtlas" title="This is the reference name of the file that contains your Civilization's icon alpha atlas."><br>
             
-            Icon Alpha Atlas:
-            <input type="text" id="iconAlphaAtlas" title="This is the reference name of the file that contains your Civilization's icon alpha atlas."><br>
-            
-            Portrait Index:
-            <input type="number" min = 0 value = 0 id="portraitIndex" title="This is the index of your civilization's icon."><br>
-            
+                <label>Portrait Index:</label>
+                <input type="number" min = 0 value = 0 id="portraitIndex" title="This is the index of your civilization's icon."><br>
+            </p>
             
             <h5>Images are the next part. It is important to note that Civilization V only accepts .dds files, as .dds files are the coolest. Write the names of your images for your Map and your Dawn of Man image below, including the .dds tag. Your file should end up looking like; MapBabylon512.dds or DOM_Nebuchadnezzar.dds. Note that after you get your file, you need to set all of your image files to SetVFS=True in the Civilization V Modbuddy.</h5>
             
-            Map Image:
-            <input type="text" id="mapImageName" title="This is the name of the .dds file that contains your Civilization's map."><br>
+            <p>
+                <label>Map Image:</label>
+                <input type="text" id="mapImageName" title="This is the name of the .dds file that contains your Civilization's map."><br>
+
+                <label>Dawn of Man Image:</label>
+                <input type="text" id="domImageName" title="This is the name of the .dds file that contains your Civilization's Dawn of Man image."><br>
+            </p>
+                <h5>If you have a voice actor for your Dawn of Man Speech, here is where you make them talk. It is okay to leave this part blank, as audio is not required to build the mod, but remember to set VFS=True again in Modbuddy like you did with the images!</h5>
+            <p>
+                <label>Dawn of Man Voiceover:</label>
+                <input type="text" id="domVoice" title="This is the name of the .mp3 file that your voice actor recorded for the DOM."><br>
+            </p>
             
-            Dawn of Man Image:
-            <input type="text" id="domImageName" title="This is the name of the .dds file that contains your Civilization's Dawn of Man image."><br>
-            
-            <h5>If you have a voice actor for your Dawn of Man Speech, here is where you make them talk. It is okay to leave this part blank, as audio is not required to build the mod, but remember to set VFS=True again in Modbuddy like you did with the images!</h5>
-            
-            Dawn of Man Voice Over:
-            <input type="text" id="domVoice" title="This is the name of the .mp3 file that your voice actor recorded for the DOM."><br>
-            
-        <!-- City Table -->
-        <h2>Cities</h2>
-            
-        <h5>Cities are the lifeblood of Civilization. Whether you prefer to play tall or wide, there is no denying it, running out of cities is not the best way to play the game. Select the number of cities you wish for your civilization to have, from 1 to 20. The first city in the list will be your capitol. Any cities founded after the player hits your maximum number of cities will behave like the Hunnic UA, and steal names from rival civilizations.</h5>
-            Number of Cities:
-            <input type="number" id="cityCount" min=1 max=20 value=1 title="Enter the number of possible cities in your civilization. Field accepts values from 1 to 20.">
-            <input type="submit" onclick="generateCityList(); return false;" value="Submit"><br>
+            <!-- City Table -->
+            <h2>Cities</h2>
+
+            <h5>Cities are the lifeblood of Civilization. Whether you prefer to play tall or wide, there is no denying it, running out of cities is not the best way to play the game. Select the number of cities you wish for your civilization to have, from 1 to 20. The first city in the list will be your capitol. Any cities founded after the player hits your maximum number of cities will behave like the Hunnic UA, and steal names from rival civilizations.</h5>
+            <p>
+                <label>Number of Cities:</label>
+                <input type="number" id="cityCount" min=1 max=20 value=1 onchange="generateCityList(); return false;" title="Enter the number of possible cities in your civilization. Field accepts values from 1 to 20.">    
+            </p>
             <div id="city1" style="display: visible;">
-                Capitol: 
-                <input type="text" id="cityname1" name="city1" title="Enter the first city in the list. This will be your Civilization's capital."><br>
+                <p>
+                    <label>Capitol:</label> 
+                    <input type="text" id="cityname1" name="city1" title="Enter the first city in the list. This will be your Civilization's capital."><br>
+                </p>
             </div>
             <div id="city2" style="display: none;">
-                City 2: 
-                <input type="text" id="cityname2" name="city2" title="Enter the second city in the list."><br>
+                <p>
+                    <label>City 2:</label>
+                    <input type="text" id="cityname2" name="city2" title="Enter the second city in the list."><br>
+                </p>
             </div>
             <div id="city3" style="display: none;">
-                City 3: 
-                <input type="text" id="cityname3" name="city3" title="Enter the third city in the list."><br>
+                <p>
+                    <label>City 3:</label>
+                    <input type="text" id="cityname3" name="city3" title="Enter the third city in the list."><br>
+                </p>
             </div>
             <div id="city4" style="display: none;">
-                City 4: 
-                <input type="text" id="cityname4" name="city4" title="Enter the fourth city in the list."><br>
+                <p>
+                    <label>City 4:</label>
+                    <input type="text" id="cityname4" name="city4" title="Enter the fourth city in the list."><br>
+                </p>
             </div>
             <div id="city5" style="display: none;">
-                City 5: 
-                <input type="text" id="cityname5" name="city5" title="Enter the fifth city in the list."><br>
+                <p>
+                    <label>City 5:</label>
+                    <input type="text" id="cityname5" name="city5" title="Enter the fifth city in the list."><br>
+                </p>
             </div>
             <div id="city6" style="display: none;">
-                City 6: 
-                <input type="text" id="cityname6" name="city6" title="Enter the sixth city in the list."><br>
+                <p>
+                    <label>City 6:</label>
+                    <input type="text" id="cityname6" name="city6" title="Enter the sixth city in the list."><br>
+                </p>
             </div>
             <div id="city7" style="display: none;">
-                City 7: 
-                <input type="text" id="cityname7" name="city7" title="Enter the seventh city in the list."><br>
+                <p>
+                    <label>City 7:</label>
+                    <input type="text" id="cityname7" name="city7" title="Enter the seventh city in the list."><br>
+                </p>
             </div>
             <div id="city8" style="display: none;">
-                City 8: 
-                <input type="text" id="cityname8" name="city8" title="Enter the eigth city in the list."><br>
+                <p>
+                    <label>City 8:</label>
+                    <input type="text" id="cityname8" name="city8" title="Enter the eigth city in the list."><br>
+                </p>
             </div>
             <div id="city9" style="display: none;">
-                City 9: 
-                <input type="text" id="cityname9" name="city9" title="Enter the ninth city in the list."><br>
+                <p>
+                    <label>City 9:</label>
+                    <input type="text" id="cityname9" name="city9" title="Enter the ninth city in the list."><br>
+                </p>
             </div>
             <div id="city10" style="display: none;">
-                City 10: 
-                <input type="text" id="cityname10" name="city10" title="Enter the tenth city in the list."><br>
+                <p>
+                    <label>City 10:</label> 
+                    <input type="text" id="cityname10" name="city10" title="Enter the tenth city in the list."><br>
+                </p>
             </div>
             <div id="city11" style="display: none;">
-                City 11: 
-                <input type="text" id="cityname11" name="city11" title="Enter the eleventh city in the list."><br>
+                <p>
+                    <label>City 11:</label>
+                    <input type="text" id="cityname11" name="city11" title="Enter the eleventh city in the list."><br>
+                </p>
             </div>
             <div id="city12" style="display: none;">
-                City 12: 
-                <input type="text" id="cityname12" name="city12" title="Enter the twelth city in the list."><br>
+                <p>
+                    <label>City 12:</label>
+                    <input type="text" id="cityname12" name="city12" title="Enter the twelth city in the list."><br>
+                </p>
             </div>
             <div id="city13" style="display: none;">
-                City 13
-                <input type="text" id="cityname13" name="city13" title="Enter the thirteenth city in the list."><br>
+                <p>
+                    <label>City 13:</label>
+                    <input type="text" id="cityname13" name="city13" title="Enter the thirteenth city in the list."><br>
+                </p>
             </div>
             <div id="city14" style="display: none;">
-                City 14: 
-                <input type="text" id="cityname14" name="city14" title="Enter the fourteenth city in the list."><br>
+                <p>
+                    <label>City 14:</label>
+                    <input type="text" id="cityname14" name="city14" title="Enter the fourteenth city in the list."><br>
+                </p>
             </div>
             <div id="city15" style="display: none;">
-                City 15: 
-                <input type="text" id="cityname15" name="city15" title="Enter the fifteenth city in the list."><br>
+                <p>
+                    <label>City 15:</label>
+                    <input type="text" id="cityname15" name="city15" title="Enter the fifteenth city in the list."><br>
+                </p>
             </div>
             <div id="city16" style="display: none;">
-                City 16:
-                <input type="text" id="cityname16" name="city16" title="Enter the sixteenth city in the list."><br>
+                <p>
+                    <label>City 16:</label>
+                    <input type="text" id="cityname16" name="city16" title="Enter the sixteenth city in the list."><br>
+                </p>
             </div>
             <div id="city17" style="display: none;">
-                City 17:
-                <input type="text" id="cityname17" name="city17" title="Enter the seventeenth city in the list."><br>
+                <p>
+                    <label>City 17:</label>
+                    <input type="text" id="cityname17" name="city17" title="Enter the seventeenth city in the list."><br>
+                </p>
             </div>
             <div id="city18" style="display: none;">
-                City 18: 
-                <input type="text" id="cityname18" name="city18" title="Enter the eighteenth city in the list."><br>
+                <p>
+                    <label>City 18:</label>
+                    <input type="text" id="cityname18" name="city18" title="Enter the eighteenth city in the list."><br>
+                </p>
             </div>
             <div id="city19" style="display: none;">
-                City 19: 
-                <input type="text" id="cityname19" name="city19" title="Enter the nineteenth city in the list."><br>
+                <p>
+                    <label>City 19:</label>
+                    <input type="text" id="cityname19" name="city19" title="Enter the nineteenth city in the list."><br>
+                </p>
             </div>
             <div id="city20" style="display: none;">
-                City 20:
-                <input type="text" id="cityname20" name="city20" title="Enter the twentieth city in the list."><br>
+                <p>
+                    <label>City 20:</label>
+                    <input type="text" id="cityname20" name="city20" title="Enter the twentieth city in the list."><br>
+                </p>
             </div>
             
             <h5>Now that you have a healthy list of cities, it would probably be a good idea to set a start bias for your Civilization. Start biases ensure that a Civilization like the Celts doesn't start in the desert.</h5>
-        <!-- Leader -->
-        <h2>Leaders</h2>
+            <!-- Leader -->
+            <h2>Leaders</h2>
             <h5>Every Civilization has a strong leader backing them, no matter if they are Bismark of Germany, Mao Zedong of the People's Republic of China, or Doctor Doom of Latveria. We wont generate your Leader in this file, but we will reference them here. An example of the proper format for Bismark would be LEADER_BISMARK.</h5>
-            Leader:
-            <input type="text" id="leader" title="Put the reference name of your civilization's leader. Leaving this blank will default to Washington (LEADER_WASHINGTON)"><br>
-        <!-- Preferred Religion -->
-        <h2>Religion</h2>
+            <p>
+                <label>Leader Reference Name:</label>
+                <input type="text" id="leader" title="Put the reference name of your civilization's leader. Leaving this blank will default to Washington (LEADER_WASHINGTON)"><br>
+            </p>
+            <!-- Preferred Religion -->
+            <h2>Religion</h2>
             <h5>Regardless of whether or not a civilization manages to accumulate enough faith to found religion, each civilization has a preferred religion that it will try to adopt after gaining enough faith. This will default to RELIGION_ZOROASTRIANISM if no preferred religion is entered, as more Civilizations should prefer it.</h5>
-            Religion:
-            <input type="text" id="religion" title="Put the reference name of your civilization's preferred Religion. Leaving this blank will default to Zoroastrianism (RELIGION_ZOROASTRIANISM)"><br>
-        <!-- Civilization Spy Names -->
-        <h2>Spy Names</h2>
+            <p>
+                <label>Religion:</label>
+                <input type="text" id="religion" title="Put the reference name of your civilization's preferred Religion. Leaving this blank will default to Zoroastrianism (RELIGION_ZOROASTRIANISM)"><br>
+            </p>
+            <!-- Civilization Spy Names -->
+            <h2>Spy Names</h2>
             <h5>Regardless of whether or not they are used for espionage or diplomacy, spies provide an excellent means for civilizations to get ahead in the world without declaring war. If your spy expects female pronouns, check the box to the right of their name. </h5>
-            Spy 1:
-            <input type="text" id="spy1" title="Put the name of your civilization's first spy here.">
-            <input type="checkbox" id="spy1isFemale" title="Check this if this spy is female. Defaults to male."> 
-            Is this spy female?<br>
+            <p>
+                <label>Spy 1:</label>
+                <input type="text" id="spy1" title="Put the name of your civilization's first spy here.">
+                <input type="checkbox" id="spy1isFemale" title="Check this if this spy is female. Defaults to male."> 
+                Is this spy female?<br>
             
-            Spy 2:
-            <input type="text" id="spy2" title="Put the name of your civilization's second spy here.">
-            <input type="checkbox" id="spy2isFemale" title="Check this if this spy is female. Defaults to male.">
-            Is this spy female?<br>
-            Spy 3:
-            <input type="text" id="spy3" title="Put the name of your civilization's third spy here.">
-            <input type="checkbox" id="spy3isFemale" title="Check this if this spy is female. Defaults to male.">
-            Is this spy female?<br>
+                <label>Spy 2:</label>
+                <input type="text" id="spy2" title="Put the name of your civilization's second spy here.">
+                <input type="checkbox" id="spy2isFemale" title="Check this if this spy is female. Defaults to male.">
+                Is this spy female?<br>
+                
+                <label>Spy 3:</label>
+                <input type="text" id="spy3" title="Put the name of your civilization's third spy here.">
+                <input type="checkbox" id="spy3isFemale" title="Check this if this spy is female. Defaults to male.">
+                Is this spy female?<br>
+
+                <label>Spy 4:</label>
+                <input type="text" id="spy4" title="Put the name of your civilization's fourth spy here.">
+                <input type="checkbox" id="spy4isFemale" title="Check this if this spy is female. Defaults to male.">
+                Is this spy female?<br>
+
+                <label>Spy 5:</label>
+                <input type="text" id="spy5" title="Put the name of your civilization's fifth spy here.">
+                <input type="checkbox" id="spy5isFemale" title="Check this if this spy is female. Defaults to male.">
+                Is this spy female?<br>
+
+                <label>Spy 6:</label>
+                <input type="text" id="spy6" title="Put the name of your civilization's sixth spy here.">
+                <input type="checkbox" id="spy6isFemale" title="Check this if this spy is female. Defaults to male.">
+                Is this spy female?<br>
+
+                <label>Spy 7:</label>
+                <input type="text" id="spy7" title="Put the name of your civilization's seventh spy here.">
+                <input type="checkbox" id="spy7isFemale" title="Check this if this spy is female. Defaults to male.">
+                Is this spy female?<br>
+
+                <label>Spy 8:</label>
+                <input type="text" id="spy8" title="Put the name of your civilization's eighth spy here.">
+                <input type="checkbox" id="spy8isFemale" title="Check this if this spy is female. Defaults to male.">
+                Is this spy female?<br>
+
+                <label>Spy 9:</label>
+                <input type="text" id="spy9" title="Put the name of your civilization's ninth spy here.">
+                <input type="checkbox" id="spy9isFemale" title="Check this if this spy is female. Defaults to male.">
+                Is this spy female?<br>
+
+                <label>Spy 10:</label>
+                <input type="text" id="spy10" title="Put the name of your civilization's tenth spy here.">
+                <input type="checkbox" id="spy10isFemale" title="Check this if this spy is female. Defaults to male.">
+                Is this spy female?<br>
+            </p>
             
-            Spy 4:
-            <input type="text" id="spy4" title="Put the name of your civilization's fourth spy here.">
-            <input type="checkbox" id="spy4isFemale" title="Check this if this spy is female. Defaults to male.">
-            Is this spy female?<br>
-            
-            Spy 5:
-            <input type="text" id="spy5" title="Put the name of your civilization's fifth spy here.">
-            <input type="checkbox" id="spy5isFemale" title="Check this if this spy is female. Defaults to male.">
-            Is this spy female?<br>
-            
-            Spy 6:
-            <input type="text" id="spy6" title="Put the name of your civilization's sixth spy here.">
-            <input type="checkbox" id="spy6isFemale" title="Check this if this spy is female. Defaults to male.">
-            Is this spy female?<br>
-            
-            Spy 7:
-            <input type="text" id="spy7" title="Put the name of your civilization's seventh spy here.">
-            <input type="checkbox" id="spy7isFemale" title="Check this if this spy is female. Defaults to male.">
-            Is this spy female?<br>
-            
-            Spy 8:
-            <input type="text" id="spy8" title="Put the name of your civilization's eighth spy here.">
-            <input type="checkbox" id="spy8isFemale" title="Check this if this spy is female. Defaults to male.">
-            Is this spy female?<br>
-            
-            Spy 9:
-            <input type="text" id="spy9" title="Put the name of your civilization's ninth spy here.">
-            <input type="checkbox" id="spy9isFemale" title="Check this if this spy is female. Defaults to male.">
-            Is this spy female?<br>
-            
-            Spy 10:
-            <input type="text" id="spy10" title="Put the name of your civilization's tenth spy here.">
-            <input type="checkbox" id="spy10isFemale" title="Check this if this spy is female. Defaults to male.">
-            Is this spy female?<br>
-            
-        <!-- Unit Class Overrides -->
-        <h2>Unit and Building Overrides</h2>
-        <h5>In order for Civilization V to recognize a Civilization, it must have at least two unique units or buildings. The combination of which does not matter. A unique object is recognized within the code as having both a name (how the object is seen in the code), and a class (what existing entity does this object replace). You can also have more unique units or buildings than two, should you so desire, although this editor only allows a maximum of four.</h5>
-        
-        <h4>Unique Units</h4>
-        <input type="number" id="UUCount" min=0 max=2 value=0 title="Enter the number of unique units your Civilization uses. Field accepts values from 0 to 2.">
-        <input type="submit" onclick="generateUnitList(); return false;" value="Submit"><br>
-        <div id="unit1" style="display: none;">
-            Unique Unit 1 Name: 
-            <input type="text" id="u1Name" name="unit1Name" title="Enter the first city in the list. This will be your Civilization's capital.">
-            Unique Unit 1 Class: 
-            <input type="text" id="u1Class" name="unit2Class" title="Enter the first city in the list. This will be your Civilization's capital."><br>
-        </div>
-        <div id="unit2" style="display: none;">
-            Unique Unit 2 Name: 
-            <input type="text" id="u2Name" name="unit2Name" title="Enter the second city in the list.">
-            Unique Unit 2 Class: 
-            <input type="text" id="u2Class" name="unit2Class" title="Enter the first city in the list. This will be your Civilization's capital."><br>
-        </div>
-        <h4>Unique Buildings</h4>
-        <input type="number" id="UBCount" min=0 max=2 value=0 title="Enter the number of unique units your Civilization uses. Field accepts values from 0 to 2.">
-        <input type="submit" onclick="generateBuildingList(); return false;" value="Submit"><br>
-        <div id="building1" style="display: none;">
-            Unique Building 1 Name: 
-            <input type="text" id="b1Name" name="building1Name" title="Enter the first city in the list. This will be your Civilization's capital.">
-            Unique Building 1 Class: 
-            <input type="text" id="b1Class" name="building2Class" title="Enter the first city in the list. This will be your Civilization's capital."><br>
-        </div>
-        <div id="building2" style="display: none;">
-            Unique Building 2 Name: 
-            <input type="text" id="b2Name" name="building2Name" title="Enter the second city in the list.">
-            Unique Building 2 Class: 
-            <input type="text" id="b2Class" name="building2Class" title="Enter the first city in the list. This will be your Civilization's capital."><br>
-        </div>
+            <!-- Unit Class Overrides -->
+            <h2>Unit and Building Overrides</h2>
+            <h5>In order for Civilization V to recognize a Civilization, it must have at least two unique units or buildings. The combination of which does not matter. A unique object is recognized within the code as having both a name (how the object is seen in the code), and a class (what existing entity does this object replace). You can also have more unique units or buildings than two, should you so desire, although this editor only allows a maximum of four.</h5>
+
+            <h4>Unique Units</h4>
+            <input type="number" id="UUCount" min=0 max=2 value=0 onchange="generateUnitList(); return false;" title="Enter the number of unique units your Civilization uses. Field accepts values from 0 to 2."><br>
+            <div id="unit1" style="display: none;">
+                <p>
+                    <label>Unique Unit 1 Reference Name:</label>
+                    <input type="text" id="u1Name" name="unit1Name" title="Enter the first city in the list. This will be your Civilization's capital."><br>
+                    <label>Unique Unit 1 Class Name:</label>
+                    <input type="text" id="u1Class" name="unit2Class" title="Enter the first city in the list. This will be your Civilization's capital."><br>
+                </p>
+            </div>
+            <div id="unit2" style="display: none;">
+                <p>
+                    <label>Unique Unit 2 Reference Name:</label>
+                    <input type="text" id="u2Name" name="unit2Name" title="Enter the second city in the list."><br>
+                    <label>Unique Unit 2 Class Name:</label>
+                    <input type="text" id="u2Class" name="unit2Class" title="Enter the first city in the list. This will be your Civilization's capital."><br>
+                </p>
+            </div>
+            <h4>Unique Buildings</h4>
+            <input type="number" id="UBCount" min=0 max=2 value=0 onchange="generateBuildingList(); return false;" title="Enter the number of unique units your Civilization uses. Field accepts values from 0 to 2."><br>
+            <div id="building1" style="display: none;">
+                <p>
+                    <label>Unique Building 1 Reference Name:</label>
+                    <input type="text" id="b1Name" name="building1Name" title="Enter the first city in the list. This will be your Civilization's capital."><br>
+                    <label>Unique Building 1 Class Name:</label>
+                    <input type="text" id="b1Class" name="building2Class" title="Enter the first city in the list. This will be your Civilization's capital."><br>
+                </p>
+            </div>
+            <div id="building2" style="display: none;">
+                <p>
+                    <label>Unique Building 2 Reference Name:</label>
+                    <input type="text" id="b2Name" name="building2Name" title="Enter the second city in the list."><br>
+                    <label>Unique Building 2 Class Name:</label>
+                    <input type="text" id="b2Class" name="building2Class" title="Enter the first city in the list. This will be your Civilization's capital."><br>
+                </p>
+            </div>
     
-        <!-- Player Colour -->
-        <h2>Civilization Color</h2>
-        <h5>Civilizations are composed of a border and background color, and these colors will dominate every aspect of your Civilization's appearance. It is expected for the colors you enter here to match the color scheme used for your icon. You can enter the colors for your civilization below, as well as preview your choice in the box to the right.</h5>
-            <table style="width:100%">
-                <tr>
-                    <td>
-                        Border Color: <br>
-                        Red:
-                        <input type="number" id="ir" value=255 min=1 max=255 onchange="setPreviewColors(); return false;" title="Put a value between 1 and 255 for the Red value of your civilization's border color.">
-                        Green:
-                        <input type="number" id="ig" value=255 min=1 max=255 onchange="setPreviewColors(); return false;" title="Put a value between 1 and 255 for the Green value of your civilization's border color.">
-                        Blue:
-                        <input type="number" id="ib" value=255 min=1 max=255 onchange="setPreviewColors(); return false;" title="Put a value between 1 and 255 for the Blue value of your civilization's border color."><br><br>
-                    </td>
-                    <td>
-                        Preview:
-                        <div id="IColor" style="width:400px;height:50px;border:1px solid #000; background-color:rgb(ir.value,0,0);"></div>
-                    </td>
-                </tr>
-            </table><br>
-            <table style="width:100%">
-                <tr>
-                    <td>
-                        Background Color: <br>
-                        Red:
-                        <input type="number" id="br" value=255 min=1 max=255 onchange="setPreviewColors(); return false;" title="Put a value between 1 and 255 for the Red value of your civilization's background color.">
-                        Green:
-                        <input type="number" id="bg" value=255 min=1 max=255 onchange="setPreviewColors(); return false;" title="Put a value between 1 and 255 for the Green value of your civilization's background color.">
-                        Blue:
-                        <input type="number" id="bb" value=255 min=1 max=255 onchange="setPreviewColors(); return false;" title="Put a value between 1 and 255 for the Blue value of your civilization's background color."><br><br>
-                    </td>
-                    <td>
-                        Preview:
-                        <div id="BColor" style="width:400px;height:50px;border:1px solid #000;"></div><br>
-                    </td>
-                </tr>
-            </table>
-        <!-- Language -->
-        <h2>Lore</h2>
-        <h5>A good Civilization is worth learning about. Tell the world more about what to expect from your Civilization. Their goals, their policies, and their history.</h5>
-            Title:
-            <input type="text" id="civtitle" name="civtitle" title="Enter the title for your civilizaton; what appears on the Civilization Select screen."><br>
-            Description Text:
-            <input type="text" id="civdesc" name="civdesc" title="Enter the description for your civilization."><br>
-            Short Description Text:
-            <input type="text" id="civshortdesc" name="civshortdesc" title="Enter the short description for your civilization."><br>
-            Adjective Text:
-            <input type="text" id="civadj" name="civadj" title="Enter the adjective for your civilization's people."><br>
-            Dawn of Man Text:
-            <textarea id="civDOMText" draggable="false" rows="10" cols="111">Can you lead your civilization to stand the test of time? If you want to move your text to a new line, type [newline]!</textarea><br><br>
+            <!-- Player Colour -->
+            <h2>Civilization Color</h2>
+            <h5>Civilizations are composed of a border and background color, and these colors will dominate every aspect of your Civilization's appearance. It is expected for the colors you enter here to match the color scheme used for your icon. You can enter the colors for your civilization below, as well as preview your choice in the box to the right.</h5>
+                <table style="width:100%">
+                    <tr>
+                        <td>
+                            <label>Border Color:</label><br>
+                            <label>Red:</label>
+                            <input type="number" id="ir" value=255 min=1 max=255 onchange="setPreviewColors(); return false;" title="Put a value between 1 and 255 for the Red value of your civilization's border color.">
+                            <label>Green:</label>
+                            <input type="number" id="ig" value=255 min=1 max=255 onchange="setPreviewColors(); return false;" title="Put a value between 1 and 255 for the Green value of your civilization's border color.">
+                            <label>Blue:</label>
+                            <input type="number" id="ib" value=255 min=1 max=255 onchange="setPreviewColors(); return false;" title="Put a value between 1 and 255 for the Blue value of your civilization's border color."><br><br>
+                        </td>
+                        <td>
+                            <label>Preview:</label>
+                            <div id="IColor" style="width:400px;height:50px;border:1px solid #000; background-color:rgb(ir.value,0,0);"></div>
+                        </td>
+                    </tr>
+                </table><br>
+                <table style="width:100%">
+                    <tr>
+                        <td>
+                            <label>Background Color:</label><br>
+                            <label>Red:</label>
+                            <input type="number" id="br" value=255 min=1 max=255 onchange="setPreviewColors(); return false;" title="Put a value between 1 and 255 for the Red value of your civilization's background color.">
+                            <label>Green:</label>
+                            <input type="number" id="bg" value=255 min=1 max=255 onchange="setPreviewColors(); return false;" title="Put a value between 1 and 255 for the Green value of your civilization's background color.">
+                            <label>Blue:</label>
+                            <input type="number" id="bb" value=255 min=1 max=255 onchange="setPreviewColors(); return false;" title="Put a value between 1 and 255 for the Blue value of your civilization's background color."><br><br>
+                        </td>
+                        <td>
+                            <label>Preview:</label>
+                            <div id="BColor" style="width:400px;height:50px;border:1px solid #000;"></div><br>
+                        </td>
+                    </tr>
+                </table>
+            <!-- Language -->
+            <h2>Lore</h2>
+            <h5>A good Civilization is worth learning about. Tell the world more about what to expect from your Civilization. Their goals, their policies, and their history.</h5>
+            <p>
+                <label>Civilization Title:</label>
+                <input type="text" id="civtitle" name="civtitle" title="Enter the title for your civilizaton; what appears on the Civilization Select screen."><br>
+                <label>Civilization Description:</label>
+                <input type="text" id="civdesc" name="civdesc" title="Enter the description for your civilization."><br>
+                <label>Civilization Short Description Text:</label>
+                <input type="text" id="civshortdesc" name="civshortdesc" title="Enter the short description for your civilization."><br>
+                <label>Civilization Adjective Text:</label>
+                <input type="text" id="civadj" name="civadj" title="Enter the adjective for your civilization's people."><br>
+                <label>Civilization Dawn of Man Text:</label>
+                <textarea id="civDOMText" draggable="false" rows="10" cols="111">Can you lead your civilization to stand the test of time? If you want to move your text to a new line, type [newline]!</textarea><br>
+            </p>
         </form>
         <!--Generate!-->
         <button type="button" id="generateCivilization" onclick="createXML(); return false;">Generate Civilization.xml</button><br><br>
