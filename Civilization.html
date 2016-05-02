@@ -382,8 +382,6 @@
             var civilizationMapImage = "";
             var civilizationDOMImage = "";
             var civilizationArtStyle = "";
-            var civilizationAtlas = "";
-            var civilizationAlphaAtlas = "";
             var civilizationDOMAudio = "";
             var civilizationDOMText = "";
             var civilizationADJ = "";
@@ -528,8 +526,8 @@
                 document.getElementById("finalXML").value+=("\t\t\t <ArtStyleSuffix>"+document.getElementById("artStyleSelect").value+"</ArtStyleSuffix> \n");
                 document.getElementById("finalXML").value+=("\t\t\t <ArtStylePrefix>"+document.getElementById("artStyleSelect").options[document.getElementById('artStyleSelect').selectedIndex].text+"</ArtStylePrefix> \n");
                 document.getElementById("finalXML").value+=("\t\t\t <PortraitIndex>"+portraitIndex+"</PortraitIndex> \n");
-                document.getElementById("finalXML").value+=("\t\t\t <IconAtlas>"+civilizationAtlas+"_COLOR_ATLAS</IconAtlas> \n");
-                document.getElementById("finalXML").value+=("\t\t\t <AlphaIconAtlas>"+civilizationAlphaAtlas+"_ALPHA_ATLAS</AlphaIconAtlas> \n");
+                document.getElementById("finalXML").value+=("\t\t\t <IconAtlas>"+document.getElementById('iconAtlas').value+"</IconAtlas> \n");
+                document.getElementById("finalXML").value+=("\t\t\t <AlphaIconAtlas>"+document.getElementById('iconAlphaAtlas').value+"</AlphaIconAtlas> \n");
                 document.getElementById("finalXML").value+=("\t\t\t <MapImage>"+civilizationMapImage+"</MapImage> \n");
                 document.getElementById("finalXML").value+=("\t\t\t <DawnOfManQuote>TXT_KEY_CIV5_DAWN_"+civilizationReference+"_TEXT</DawnOfManQuote>  \n");
                 document.getElementById("finalXML").value+=("\t\t\t <DawnOfManImage>"+civilizationDOMImage+"</DawnOfManImage> \n");
